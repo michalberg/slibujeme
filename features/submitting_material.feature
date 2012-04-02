@@ -3,13 +3,16 @@ Feature: Submitting material
   As a user
   I want use a form for it
 
-  Scenario: Submitting single image
+  Scenario: Submitting material
     Given there are the following elections:
       | title              |
       | krajské volby 2012 |
     And there are the following municipalities:
-      | title                   |
+      | title                  |
       | Brno (okr. Brno-město) |
+    And there are the following parties:
+      | title |
+      | ODS   |
     And I am on the material submit page
     When I select "krajské volby 2012" from "Volby"
     And I select "Brno (okr. Brno-město)" from "Obec"

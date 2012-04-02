@@ -9,8 +9,8 @@
       <%= f.label :municipality_id %>
       <%= f.collection_select :municipality_id, Municipality.all, 'id', 'title' %>
       
-      <%= f.label :party %>
-      <%= f.select :party, {"ODS" => "ODS", "TOP09" => "TOP09"} %>
+      <%= f.label :party_id %>
+      <%= f.collection_select :party_id, Party.all, 'id', 'title' %>
       
       <%= f.label :topics %>
       <%= f.text_area :topics %>
