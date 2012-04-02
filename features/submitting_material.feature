@@ -33,9 +33,9 @@ Feature: Submitting material
     And I press "Vložit"
     
     Then I should see "Děkujeme za nahrání dokumentu."
-    And I should have a cookie with my email
-
-    When "user@email.tld" opens email with subject "Váš účet na slibujeme.cz"
-    Then I should see the email delivered from "aplikace@slibujeme.cz"
-    And I should see "Heslo" in the email body
-  
+    And I should see "krajské volby 2012"
+    And I should see "Brno (okr. Brno-město)"
+    And I should see "ODS"
+    And I should see "doprava"
+    And I should see "Jiří Paroubek"
+    And I should see "Josef Dobeš"

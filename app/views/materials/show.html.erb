@@ -1,2 +1,19 @@
-<h1>Materials#show</h1>
-<p>Find me in app/views/materials/show.html.erb</p>
+<%= flash[:notice]%>
+
+<div id="material-show-metadata-basic">
+    <span class="tag"><%= @material.election.title %></span>
+    <span class="tag"><%= @material.municipality.title %></span>
+    <span class="tag"><%= @material.party.title %></span>
+</div>
+
+<div id="material-show-topics">
+    <% @material.topics.split(',').each do |topic| %>
+    <span class="tag"><%= topic.strip %></span>
+    <% end %>
+</div>
+
+<div id="material-show-people">
+    <% @material.polititians.split(',').each do |person| %>
+    <span class="tag"><%= person.strip %></span>
+    <% end %>
+</div>
