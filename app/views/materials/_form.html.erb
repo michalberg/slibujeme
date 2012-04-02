@@ -6,8 +6,8 @@
       <%= f.label :election_id %>
       <%= f.collection_select :election_id, Election.all, 'id', 'title' %>
       
-      <%= f.label :municipality %>
-      <%= f.select :municipality, { "Brno (okr. Brno-město)" => "Brno (okr. Brno-město)", "Praha (okr. Praha)" => "Praha (okr. Praha)" } %>
+      <%= f.label :municipality_id %>
+      <%= f.collection_select :municipality_id, Municipality.all, 'id', 'title' %>
       
       <%= f.label :party %>
       <%= f.select :party, {"ODS" => "ODS", "TOP09" => "TOP09"} %>

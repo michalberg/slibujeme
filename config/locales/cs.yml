@@ -5,7 +5,7 @@ cs:
     attributes:
       material:
         election_id: Volby
-        municipality: Obec
+        municipality_id: Obec
         party: Strana
         topics: Témata
         polititians: Osoby
