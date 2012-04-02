@@ -1,0 +1,24 @@
+cs:
+  activerecord:
+    models:
+      material: Dokument
+    attributes:
+      material:
+        election_id: Volby
+        municipality: Obec
+        party: Strana
+        topics: Témata
+        polititians: Osoby
+        comment: Komentář
+        contact: Kontakt
+  helpers:
+    back: Zpět
+    show: Zobrazit
+    create: Přidat
+    update: Upravit
+  notice:
+    material:
+      created: "Děkujeme za nahrání dokumentu."
+  alert:
+    material:
+      not_created: "Při přidávání materiálu se objevily chyby."

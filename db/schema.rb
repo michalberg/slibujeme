@@ -11,6 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20120402064612) do
+
+  create_table "elections", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "materials", :force => true do |t|
+    t.integer  "election_id"
+    t.integer  "municipality_id"
+    t.integer  "party_id"
+    t.text     "topics"
+    t.text     "polititians"
+    t.text     "comment"
+    t.string   "contact"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
 
 end

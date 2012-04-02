@@ -1,4 +1,5 @@
 Slibujeme::Application.routes.draw do
+  resources :materials, :except => [:destroy]
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
