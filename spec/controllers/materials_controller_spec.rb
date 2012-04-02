@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe MaterialsController do
-
   describe "GET 'index'" do
     it "returns http success" do
       get 'index'
@@ -10,8 +9,9 @@ describe MaterialsController do
   end
 
   describe "GET 'show'" do
+    let(:material) { create(:material) }
     it "returns http success" do
-      get 'show'
+      get 'show', {:id => material.id}
       response.should be_success
     end
   end
@@ -23,10 +23,11 @@ describe MaterialsController do
     end
   end
 
-  describe "GET 'create'" do
-    it "returns http success" do
-      get 'create'
-      response.should be_success
+  describe "POST 'create'" do
+    let(:material) { build(:material, :id => 1) }
+    it "redirects to materia detail" do
+      post 'create', material.attributes
+      response.should redirect_to(material_path(material.id))
     end
   end
 
@@ -37,9 +38,10 @@ describe MaterialsController do
     end
   end
 
-  describe "GET 'update'" do
+  describe "UPDATE 'update'" do
     it "returns http success" do
-      get 'update'
+      pending
+      update 'update'
       response.should be_success
     end
   end
