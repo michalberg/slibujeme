@@ -7,7 +7,14 @@
  *
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
- *
+ *= require reset
+ *= require bootstrap.min
+ *= require base
+ *= require layout
+ *= require ico
+ *= require jquery-ui-1.8.16.custom
+ *= require jquery.lightbox
+ *= require posp
+ *= require materials
  *= require_self
- *= require_tree .
 */
