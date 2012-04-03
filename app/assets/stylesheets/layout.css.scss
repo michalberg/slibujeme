@@ -1,0 +1,272 @@
+body {
+	background: image-url("bg-body.png") top left repeat-x #dfe2ed;
+	border-top: 5px solid #3d3d3d;
+	color: #000;
+	font-family: Calibri, sans-serif;
+	font-size: 0.9em;
+	text-align: left;
+}
+#container {
+	background: #fff;
+	margin: auto;
+	margin-top: 10px;
+	width: 880px;
+}
+#container #layout {
+	display: block;
+	margin: auto;
+	width: 880px;
+}
+#container #layout #layout-top {
+	background: #eff2fa;
+	height: 160px;
+}
+#container #layout #layout-top #top-logo {
+	display: block;
+	float: left;
+	margin: 10px 0 0 20px;
+	width: 400px;
+}
+#container #layout #layout-top #top-logo a {
+	border: none;
+}
+#container #layout #layout-top #top-login {
+	color: #000;
+	display: block;
+	float: right;
+	margin: 35px 0 0 0;
+	width: 440px;
+}
+#container #layout #layout-top #top-login p {
+	margin: 5px 0 0 0;
+}
+#container #layout #layout-top #top-login p.hovers {
+	margin: 20px 0 0 150px;
+}
+#container #layout #layout-top #top-login input {
+	width: 150px;
+}
+#container #layout #layout-top #top-login div {
+	float: left;
+	width: 320px;
+}
+#container #layout #layout-top #top-login input[type="submit"] {
+	float: right;
+	margin: 5px 10px 10px 10px;
+	width: 100px;
+}
+#container #layout #layout-content {
+	background: #fff;
+	display: block;
+	float: left;
+	width: 880px;
+}
+#container #layout #layout-content.subpage {
+	padding: 0 20px;
+	width: 840px;
+}
+#container #layout #layout-content.subpage #promise-grid {
+	background: #fff;
+	display: block;
+	float: left;
+	width: 840px;
+}
+#container #layout #layout-content.subpage #promise-grid ul {
+	margin: 0;
+	padding: 0;
+}
+#container #layout #layout-content.subpage #promise-grid ul li {
+	display: inline;
+	float: left;
+	margin: 15px 0;
+	padding: 0;
+	width: 417px;
+}
+#container #layout #layout-content.subpage #promise-grid img {
+	display: block;
+	float: left;
+}
+#container #layout #layout-content.subpage #promise-grid .tags {
+	display: block;
+	float: right;
+	height: 190px;
+	margin: 10px 0 0 0;
+	overflow: hidden;
+	width: 180px;
+}
+#container #layout #layout-content.subpage #promise-grid .tags p {
+	margin: 0;
+	padding: 0 0 10px 0;
+}
+#container #layout #layout-content.subpage #promise-grid .tags p span.item {
+	color: #999;
+	text-transform: uppercase;	
+}
+#container #layout #layout-content.subpage #promise-grid div.toright {
+	margin-right: 10px;
+}
+#container #layout #layout-content #index-search {
+	display: block;
+	float: left;
+	margin-bottom: 30px;
+	padding: 10px 20px 20px 20px;
+	width: 400px;
+}
+#container #layout #layout-content #index-search form {
+	display: block;
+	float: left;
+	width: 340px;
+}
+#container #layout #layout-content #index-search #index-search-text {
+	display: block;
+	float: left;
+	font-size: 1.4em;
+	padding: 10px;
+}
+#container #layout #layout-content #index-search #index-search-submit {
+	display: block;
+	float: right;
+	font-size: 1.4em;
+	font-weight: bold;
+}
+#container #layout #layout-content #index-search p {
+	margin: 0 0 0 10px;
+	padding: 0;
+}
+#container #layout #layout-content #index-search p.from {
+	float: left;
+	padding: 5px 0 0 0;
+	width: 215px;
+}
+#container #layout #layout-content #index-search p.detailed {
+	margin: 0;
+	padding: 5px 0 0 0;
+	float: right;
+	width: 155px;
+}
+#container #layout #layout-content #index-upload {
+	display: block;
+	float: right;
+	margin-bottom: 30px;
+	padding: 10px 20px 20px 20px;
+	text-align: center;
+	width: 400px;
+}
+#container #layout #layout-content #index-upload a.big {
+	font-size: 1.6em;
+}
+#container #layout #layout-content #index-upload p {
+	margin: 0;
+}
+#container #layout #layout-content #index-upload p.info {
+	padding: 17px 0 0 0;
+}
+#container #layout #layout-content #index-texts {
+	background: #f2f2f2;
+	display: block;
+	float: left;
+	margin-bottom: 30px;
+	padding: 0;
+	width: 880px;
+}
+#container #layout #layout-content #index-texts h2 {
+	background: #e21985;
+	color: #fff;
+	font-size: 1.3em;
+	line-height: 1.6em;
+	margin: 0;
+	padding: 0 10px;
+	text-align: center;
+	text-shadow: none;
+	width: 4.5em;
+}
+#container #layout #layout-content #index-texts #about {
+	display: block;
+	float: left;
+	margin: 0 20px 0 0;
+	min-height: 300px;
+	width: 380px;
+}
+#container #layout #layout-content #index-texts #about ul {
+	display: block;
+	margin: 20px 0 0 15px;
+	padding: 0;
+}
+#container #layout #layout-content #index-texts #about h2 {
+	width: 15em;
+}
+#container #layout #layout-content #index-texts #about ul li {
+	background: image-url("bg-li.png") 0 5px no-repeat;
+	font-size: 1em;
+	list-style: none;
+	margin: 0 0 0 5px;
+	padding: 0 0 15px 20px;	
+}
+#container #layout #layout-content #index-texts #top-select {
+	background: #f2f2f2;
+	border-left: 20px solid #fff;
+	display: block;
+	float: right;
+	min-height: 300px;
+	width: 455px;
+}
+#container #layout #layout-content #index-texts #top-select #top-select-content {
+	display: block;
+	float: right;
+	padding: 10px 10px 10px 10px;
+	width: 435px;
+}
+#container #layout #layout-content #index-texts #top-select #top-select-content img {
+	float: left;
+}
+#container #layout #layout-content #index-texts #top-select #top-select-content p {
+	float: right;
+	width: 190px;
+}
+#container #layout #layout-content #index-texts #top-select #top-select-content p .item {
+	color: #999;
+	text-transform: uppercase;
+}
+#container #layout #layout-social {
+	background: #fff;
+	display: block;
+	float: left;
+	margin-bottom: 30px;
+	padding: 0 15px 20px 15px;
+	width: 850px;
+}
+#container #layout #layout-social #facebook {
+	display: block;
+	float: right;
+	width: 600;
+}
+#container #layout #layout-social #twitter {
+	display: block;
+	float: right;
+	margin-right: 15px;
+	width: 250;
+}
+#container #layout #layout-bottom {
+	background: #eff2fa;
+	display: block;
+	float: left;
+	margin-bottom: 30px;
+	padding: 15px 0 20px 15px;
+	width: 865px;
+}
+#container #layout #layout-bottom ul {
+	margin: 0;
+	padding: 0;
+}
+#container #layout #layout-bottom ul li {
+	display: inline;
+	margin: 0;
+	padding: 10px 30px;
+}
+#container #layout #layout-bottom ul li:first-child {
+	padding: 10px 30px 10px 10px;
+}
+#container #layout #layout-bottom ul li a {
+	font-size: 1.2em;
+}
+

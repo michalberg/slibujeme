@@ -1,0 +1,17 @@
+#posp_add p span {
+    color: grey;
+}
+
+#container #layout #layout-content #index-texts h2 {
+	background-color:#56a94d;
+}
+
+#posp_add textarea {
+	height:50px;
+}
+
+#posp_add .btn {
+	display: block;
+font-size: 1.4em;
+font-weight: bold;
+}
