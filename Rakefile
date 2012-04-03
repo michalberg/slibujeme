@@ -7,4 +7,4 @@ require File.expand_path('../config/application', __FILE__)
 Slibujeme::Application.load_tasks
 
 task(:default).clear
-task :default => ["db:test:prepare", :cucumber, :spec]
+task :default => ["db:migrate", "db:test:prepare", :cucumber, :spec]

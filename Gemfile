@@ -18,7 +18,7 @@ gem 'jquery-rails'
 
 group :test do
   gem 'turn', :require => false
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', :require => false
   gem 'capybara'
   gem 'database_cleaner'
   gem 'factory_girl'
