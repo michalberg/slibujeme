@@ -5,8 +5,10 @@ FactoryGirl.define do
     sequence(:title, 2010) { |n| "Volby #{n}"}
   end
   
+  party_no = sequence(:party_no).next
   factory :party do
-    sequence(:title) { |n| "Strana ##{n}"}
+    title "Strana ##{party_no}"
+    full_title "Plný název strany #{party_no}"
   end
   
   factory :municipality do
