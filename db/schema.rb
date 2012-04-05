@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120404060713) do
+ActiveRecord::Schema.define(:version => 20120405070638) do
 
   create_table "elections", :force => true do |t|
     t.string   "title"
@@ -35,7 +35,13 @@ ActiveRecord::Schema.define(:version => 20120404060713) do
     t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "ancestry"
+    t.string   "code"
+    t.float    "gps_lat"
+    t.float    "gps_lng"
   end
+
+  add_index "municipalities", ["ancestry"], :name => "index_municipalities_on_ancestry"
 
   create_table "parties", :force => true do |t|
     t.string   "title"
