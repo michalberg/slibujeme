@@ -3,8 +3,10 @@ Feature: Seed Data
   As the system
   I want to run the seed task
 
-  Scenario: Parties seed
+  Background:
     Given I have run the seed task
+
+  Scenario: Parties seed
     Then there should be the following parties created:
       | title              |
       | AS                 |
@@ -33,3 +35,6 @@ Feature: Seed Data
       | SZ                 |
       | TOP 09             |
       | VV                 |
+  
+  Scenario: Municipalities are imported in tree
+    Then there should be municipality "Blansko" with parent "Jihomoravský kraj" and child "Svinošice"
