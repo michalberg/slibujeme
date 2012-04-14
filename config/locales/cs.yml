@@ -7,7 +7,7 @@ cs:
         election_id: Volby
         municipality_id: Obec
         party_id: Strana
-        topics: Témata
+        topic_ids: Témata
         polititians: Osoby
         comment: Komentář
         contact: Kontakt
