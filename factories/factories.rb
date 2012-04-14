@@ -23,7 +23,10 @@ FactoryGirl.define do
     association :election, factory: :election
     association :party, factory: :party
     association :municipality, factory: :municipality
-    topics "doprava, politika"
+    topics { |material| [
+      material.association(:topic, :title => "doprava"),
+      material.association(:topic, :title => "politika")
+    ]}
     polititians "politik, politik2"
     comment "Komentář k dokumentu"
     sequence(:contact) { |n| "example-#{n}@domain.tld" }

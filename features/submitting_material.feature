@@ -16,14 +16,19 @@ Feature: Submitting material
     And there are the following parties:
       | title |
       | ODS   |
+    And there are the following topics:
+      | id | title        | parent_id |
+      | 1  | Doprava      |           |
+      | 2  | MHD          | 1         |
+      | 3  | Cyklostezky  | 1         |
+      | 4  | Podnikání    |           |
+      | 5  | Zaměstnanost | 4         |
     And I am on the material submit page
     When I select "krajské volby 2012" from "Volby"
     And I type in "Brn" into autocomplete list "municipality_name" and I choose "Brno (okr. Brno-město)"
     And I select "ODS" from "Strana"
-    And I fill in "Témata" with
-    """
-    doprava,
-    """
+    And I type in "Cykl" into javascript select box "Témata" and I choose "Cyklostezky"
+    And I type in "Zam" into javascript select box "Témata" and I choose "Zaměstnanost"
     And I fill in "Osoby" with
     """
     Jiří Paroubek, Josef Dobeš
@@ -39,6 +44,7 @@ Feature: Submitting material
     And I should see "krajské volby 2012"
     And I should see "Brno (okr. Brno-město)"
     And I should see "ODS"
-    And I should see "doprava"
+    And I should see "Cyklostezky"
+    And I should see "Zaměstnanost"
     And I should see "Jiří Paroubek"
     And I should see "Josef Dobeš"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120414142621) do
+ActiveRecord::Schema.define(:version => 20120414164922) do
 
   create_table "elections", :force => true do |t|
     t.string   "title"
@@ -30,6 +30,13 @@ ActiveRecord::Schema.define(:version => 20120414142621) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
+
+  create_table "materials_topics", :id => false, :force => true do |t|
+    t.integer "material_id", :null => false
+    t.integer "topic_id",    :null => false
+  end
+
+  add_index "materials_topics", ["material_id", "topic_id"], :name => "index_materials_topics_on_material_id_and_topic_id", :unique => true
 
   create_table "municipalities", :force => true do |t|
     t.string   "title"

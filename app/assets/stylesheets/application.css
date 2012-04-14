@@ -15,6 +15,7 @@
  *= require jquery-ui-1.8.16.custom
  *= require jquery.lightbox
  *= require posp
+ *= require chosen
  *= require materials
  *= require_self
 */

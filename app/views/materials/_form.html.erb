@@ -19,8 +19,8 @@
       </p>
       
       <p>
-          <%= f.label :topics %>
-          <%= f.text_area :topics %>
+          <%= f.label :topic_ids %>
+          <%= f.grouped_collection_select :topic_ids, Topic.roots, :children, :title, :id, :title, {:include_blank => true}, {:multiple => true, "data-placeholder" => "Vyberte témata..."} %>
       </p>
       
       <p>
