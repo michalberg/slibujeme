@@ -10,7 +10,8 @@
       
       <p>
           <%= f.label :municipality_id %>
-          <%= f.collection_select :municipality_id, Municipality.all, 'id', 'title' %>
+          <%= autocomplete_field_tag :municipality_name, "", autocomplete_municipality_title_materials_path, :id_element => "#material_municipality_id" %>
+          <%= f.hidden_field :municipality_id %>
       </p>
       <p>
           <%= f.label :party_id %>
