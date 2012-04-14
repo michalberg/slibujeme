@@ -3,19 +3,22 @@ Feature: Submitting material
   As a user
   I want use a form for it
 
+  @javascript
   Scenario: Submitting material
     Given there are the following elections:
       | title              |
       | krajské volby 2012 |
     And there are the following municipalities:
-      | title                  |
-      | Brno (okr. Brno-město) |
+      | id | title             | parent_id |
+      | 1  | Jihomoravský kraj |           |
+      | 2  | Brno-město        | 1         |
+      | 3  | Brno              | 2         |
     And there are the following parties:
       | title |
       | ODS   |
     And I am on the material submit page
     When I select "krajské volby 2012" from "Volby"
-    And I select "Brno (okr. Brno-město)" from "Obec"
+    And I type in "Brn" into autocomplete list "municipality_name" and I choose "Brno (okr. Brno-město)"
     And I select "ODS" from "Strana"
     And I fill in "Témata" with
     """

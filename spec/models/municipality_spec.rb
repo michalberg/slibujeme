@@ -1,3 +1,4 @@
+# encoding: utf-8
 require 'spec_helper'
 
 describe Municipality do
@@ -25,5 +26,34 @@ describe Municipality do
     
     level2.parent.should eql(level1)
     level3.parent.should eql(level2)
+  end
+  
+  context "#full_title" do
+    let!(:shire) { create(:municipality, :title => "Jihomoravský kraj") }
+    let!(:district) do |district| 
+      district = build(:municipality, :title => "Brno-Město")
+      district.parent = shire
+      district.save
+      district
+    end
+    
+    let! :city do |city|
+      city = create(:municipality, :title => "Brno")
+      city.parent = district
+      city.save
+      city
+    end
+    
+    it "is title with parent district in bracket if city" do
+      city.full_title.should eql("Brno (okr. Brno-Město)")
+    end
+    
+    it "is only title if district" do
+      district.full_title.should eql("Brno-Město")
+    end
+    
+    it "is only title if shire" do
+      shire.full_title.should eql("Jihomoravský kraj")
+    end
   end
 end

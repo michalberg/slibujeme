@@ -1,4 +1,5 @@
 class MaterialsController < ApplicationController
+  autocomplete :municipality, :title, :display_value => :full_title, :extra_data => [:ancestry]
   def index
   end
 
