@@ -38,3 +38,13 @@ Feature: Seed Data
   
   Scenario: Municipalities are imported in tree
     Then there should be municipality "Blansko" with parent "Jihomoravský kraj" and child "Svinošice"
+
+  Scenario: Topics are imported in tree
+    Then there should be topic "Sociální oblast" with children:
+      | title                     |
+      | Senioři                   |
+      | Menšiny                   |
+      | Nezaměstnaní              |
+      | Bezdomovci                |
+      | Znevýhodnění občané       |
+      | Služby pro sociálně slabé |
