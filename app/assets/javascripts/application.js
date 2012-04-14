@@ -13,4 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require autocomplete-rails
+//= require chosen.jquery.min
 //= require_tree .
