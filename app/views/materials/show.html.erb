@@ -7,8 +7,8 @@
 </div>
 
 <div id="material-show-topics">
-    <% @material.topics.split(',').each do |topic| %>
-    <span class="tag"><%= topic.strip %></span>
+    <% @material.topics.each do |topic| %>
+    <span class="tag"><%= topic.title %></span>
     <% end %>
 </div>
 
