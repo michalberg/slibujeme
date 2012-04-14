@@ -15,6 +15,10 @@ FactoryGirl.define do
     title "Brno (okr. Brno-město)"
   end
   
+  factory :topic do
+    title "Sociální oblast"
+  end
+  
   factory :material do
     association :election, factory: :election
     association :party, factory: :party
