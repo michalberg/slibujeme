@@ -16,6 +16,7 @@
  *= require jquery.lightbox
  *= require posp
  *= require chosen
+ *= require jquery.tagsinput
  *= require materials
  *= require_self
 */

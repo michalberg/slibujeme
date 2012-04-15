@@ -29,10 +29,8 @@ Feature: Submitting material
     And I select "ODS" from "Strana"
     And I type in "Cykl" into javascript select box "Témata" and I choose "Cyklostezky"
     And I type in "Zam" into javascript select box "Témata" and I choose "Zaměstnanost"
-    And I fill in "Osoby" with
-    """
-    Jiří Paroubek, Josef Dobeš
-    """
+    And I type "Jiří Paroubek" in "Osoby" tag textarea 
+    And I type "Josef Dobeš" in "Osoby" tag textarea 
     And I fill in "Komentář" with
     """
     Našel jsem to ve schránce

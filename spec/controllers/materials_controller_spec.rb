@@ -26,7 +26,7 @@ describe MaterialsController do
   describe "POST 'create'" do
     let(:material) { build(:material, :id => 1) }
     it "redirects to materia detail" do
-      post 'create', material.attributes
+      post 'create', material.attributes.merge({ :material_polititians => "Politik1, Politik2"})
       response.should redirect_to(material_path(material.id))
     end
   end
