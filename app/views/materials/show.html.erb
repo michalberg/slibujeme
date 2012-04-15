@@ -1,19 +1,33 @@
 <%= flash[:notice]%>
-
-<div id="material-show-metadata-basic">
-    <span class="tag"><%= @material.election.title %></span>
-    <span class="tag"><%= @material.municipality.full_title %></span>
-    <span class="tag"><%= @material.party.title %></span>
-</div>
-
-<div id="material-show-topics">
+<% @subpage = true %>
+<p><a href="javascript: history.go(-1)">Zpět na vyhledávání</a></p>
+	<p class="toright"><a href="#">nahlásit závadný obsah</a> | <a href="#">upravit dokument</a></p>
+	<br class="clear" />
+	<p class="toright"><img src="/img/social.png" /></p>
+<ul class="list">
+	<li><a href="#" class="label tag select"><%= @material.election.title %></a></li>
+	<li><a href="#" class="label tag select"><%= @material.municipality.full_title %></a></li>
+	<li><a href="#" class="label tag select"><%= @material.party.title %></a></li>
+</ul>
+<h3 class="type">Témata</h3>
+<ul class="list">
     <% @material.topics.each do |topic| %>
-    <span class="tag"><%= topic.title %></span>
+	<li><a href="#" class="label tag select"><%= topic.title %></a></li>
     <% end %>
-</div>
-
-<div id="material-show-people">
+</ul>
+<h3 class="type">Osoby</h3>
+<ul class="list">
     <% @material.polititians.each do |person| %>
-    <span class="tag"><%= person.name %></span>
-    <% end %>
-</div>
+	<li><a href="#" class="label tag select"><%= person.name %></a></li>
+	<% end %>
+</ul>
+<br class="clear" />
+<hr />
+<p class="center">
+	<img src="/img/temp_detail_1.jpg" /><br />
+	<img src="/img/temp_detail_2.jpg" /><br />
+	<img src="/img/temp_detail_3.jpg" /><br />
+</p>
+<br class="clear" />
+<p><a href="javascript: history.go(-1)">Zpět na vyhledávání</a></p>
+<br class="clear" />
