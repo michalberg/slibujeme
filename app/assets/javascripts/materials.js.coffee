@@ -8,4 +8,9 @@ $(->
     autocomplete_url: $("#material_polititians").attr "data-uri"
     defaultText: 'Vepište jméno politika...'
     width: "390px"
+    
+  $("#addStrana").click () ->
+      $(@).parent().find("span").show();
+      $(@).remove();
+      false
 )

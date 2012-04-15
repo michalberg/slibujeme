@@ -4,4 +4,6 @@ class Material < ActiveRecord::Base
   belongs_to :party
   has_and_belongs_to_many :topics, :uniq => true
   has_and_belongs_to_many :polititians, :uniq => true
+  has_many :image_assets
+  accepts_nested_attributes_for :image_assets, :allow_destroy => true #, :reject_if => lambda { |a| a[:image].blank? }
 end

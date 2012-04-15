@@ -1,7 +1,44 @@
 <%= form_for @material do |f| -%>
-  <div id="material-form-documents">
-      
-  </div>
+<h2>Dokumenty</h2>
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Fotky</a></li>
+		<li><a href="#tabs-3">Článek na internetu</a></li>
+		<li><a href="#tabs-2">Video</a></li>
+		
+	</ul>
+	<div id="tabs-1">
+	    <%= f.fields_for :image_assets do |builder| %>	
+	        <%= render "image_asset_fields", :f => builder %>
+        <% end %>
+        <p>
+            <a href="">Chci přidat více fotek</a>
+        </p>
+    </div>
+	<div id="tabs-3">
+        <p>
+            <label for="">Odkaz na článek</label>
+            <input class="text" type="text" name="" id="" value="" />
+        </p>
+	</div>
+	<div id="tabs-2">
+        <p>
+            <label for="">Odkaz na video</label>
+            <input class="text" type="text" name="" id="" value="" />          
+        </p>
+	</div>
+	
+</div>
+ 
+<script>
+  $(function () {
+    $( "#tabs" ).tabs();
+  })
+</script>
+
+
+<h2>Popis dokumentů</h2>
+
   <div id="material-form-metadata">
       <p>
           <%= f.label :election_id %>
