@@ -13,7 +13,7 @@
 </div>
 
 <div id="material-show-people">
-    <% @material.polititians.split(',').each do |person| %>
-    <span class="tag"><%= person.strip %></span>
+    <% @material.polititians.each do |person| %>
+    <span class="tag"><%= person.name %></span>
     <% end %>
 </div>

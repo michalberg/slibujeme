@@ -13,5 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require autocomplete-rails
+//= require jquery-ui-1.8.16.custom.min
 //= require chosen.jquery.min
+//= require jquery.tagsinput.min
 //= require_tree .

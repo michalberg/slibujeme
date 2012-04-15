@@ -1,6 +1,7 @@
 Slibujeme::Application.routes.draw do
   resources :materials, :except => [:destroy] do
     get :autocomplete_municipality_title, :on => :collection
+    get :autocomplete_polititian_name, :on => :collection
   end
   # The priority is based upon order of creation:
   # first created -> highest priority.
