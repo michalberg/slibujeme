@@ -11,6 +11,7 @@ class MaterialsController < ApplicationController
   # GET /materials/new
   def new
     @material = Material.new
+    2.times { @material.image_assets.build }
   end
 
   # POST /materials[.json]

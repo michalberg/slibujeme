@@ -37,7 +37,7 @@
 					<p class="smaller clear hovers"><a href="#">nová registrace</a> | <a href="#">zapomenuté heslo</a></p>
 				</form>
 			</div>
-			<div id="layout-content">
+			<div id="layout-content"<%= ' class="subpage"'.html_safe if @subpage %>>
             
             <%= yield %>
             

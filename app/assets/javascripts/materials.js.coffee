@@ -3,9 +3,19 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 $(->
   $("#material_topic_ids").chosen();
-  
+
   $("#material_polititians").tagsInput
     autocomplete_url: $("#material_polititians").attr "data-uri"
     defaultText: 'Vepište jméno politika...'
     width: "390px"
+
+  $("#addStrana").click () ->
+    $(@).parent().find("span").show();
+    $(@).remove();
+    false
+
+  $("#materials-add-more-image-assets").click (evt) ->
+    evt.preventDefault()
+    html = $.trim($(@).parent().siblings("p").first().html()).replace(/0/g, $(@).parent().siblings("p").length)
+    $(@).parent().before("<p>#{html}</p>")
 )

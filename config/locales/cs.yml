@@ -11,6 +11,8 @@ cs:
         polititians: Osoby
         comment: Komentář
         contact: Kontakt
+      image_asset:
+        image: Fotka
   helpers:
     back: Zpět
     show: Zobrazit
