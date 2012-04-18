@@ -12,10 +12,10 @@ group :assets do
   # gem 'therubyracer'
 
   gem 'uglifier', '>= 1.0.3'
-  gem 'rails3-jquery-autocomplete'
 end
 
 gem 'jquery-rails'
+gem 'rails3-jquery-autocomplete'
 
 group :test do
   gem 'turn', :require => false
