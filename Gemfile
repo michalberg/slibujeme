@@ -33,6 +33,8 @@ end
 
 group :production do
   gem 'pg'
+  gem 'aws-sdk'
+  gem 'aws-s3'  
 end
 
 gem 'ancestry'
