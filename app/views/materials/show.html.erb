@@ -3,7 +3,7 @@
 <p><a href="javascript: history.go(-1)">Zpět na vyhledávání</a></p>
 	<p class="toright"><a href="#">nahlásit závadný obsah</a> | <a href="#">upravit dokument</a></p>
 	<br class="clear" />
-	<p class="toright"><img src="/img/social.png" /></p>
+	<p class="toright"><%= image_tag "social.png", :title => "Sociální sítě" %></p>
 <ul class="list">
 	<li><a href="#" class="label tag select"><%= @material.election.title %></a></li>
 	<li><a href="#" class="label tag select"><%= @material.municipality.full_title %></a></li>
@@ -24,9 +24,9 @@
 <br class="clear" />
 <hr />
 <p class="center">
-	<img src="/img/temp_detail_1.jpg" /><br />
-	<img src="/img/temp_detail_2.jpg" /><br />
-	<img src="/img/temp_detail_3.jpg" /><br />
+    <% @material.image_assets.each do |img| %>
+    <%= image_tag(img.image(:detail))%><br>
+	<% end %>
 </p>
 <br class="clear" />
 <p><a href="javascript: history.go(-1)">Zpět na vyhledávání</a></p>
