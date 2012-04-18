@@ -25,25 +25,16 @@ describe MaterialsController do
 
   describe "POST 'create'" do
     let(:material) { build(:material, :id => 1) }
-    it "redirects to materia detail" do
-      post 'create', material.attributes.merge({ :material_polititians => "Politik1, Politik2"})
+    let(:user) { build(:user) }
+    it "redirects to material detail" do
+      attrs = { 
+        "material" => material.attributes.delete_if { |_, val| !val }, 
+        "user" => {"email" => user.email},
+        "material_polititians" => "Politik1, Politik2"
+      }
+
+      post 'create', attrs
       response.should redirect_to(material_path(material.id))
     end
   end
-
-  describe "GET 'edit'" do
-    it "returns http success" do
-      get 'edit'
-      response.should be_success
-    end
-  end
-
-  describe "UPDATE 'update'" do
-    it "returns http success" do
-      pending
-      update 'update'
-      response.should be_success
-    end
-  end
-
 end

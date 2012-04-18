@@ -1,5 +1,5 @@
 Slibujeme::Application.routes.draw do
-  # devise_for :users
+  devise_for :users
 
   resources :materials, :except => [:destroy] do
     get :autocomplete_municipality_title, :on => :collection

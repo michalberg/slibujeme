@@ -1,4 +1,5 @@
 class Material < ActiveRecord::Base
+  belongs_to :user
   belongs_to :election
   belongs_to :municipality
   belongs_to :party
@@ -6,4 +7,5 @@ class Material < ActiveRecord::Base
   has_and_belongs_to_many :polititians, :uniq => true
   has_many :image_assets
   accepts_nested_attributes_for :image_assets, :allow_destroy => true #, :reject_if => lambda { |a| a[:image].blank? }
+  accepts_nested_attributes_for :user, :allow_destroy => false
 end

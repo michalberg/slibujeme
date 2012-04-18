@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120418135011) do
+ActiveRecord::Schema.define(:version => 20120418144904) do
 
   create_table "elections", :force => true do |t|
     t.string   "title"
@@ -36,9 +36,9 @@ ActiveRecord::Schema.define(:version => 20120418135011) do
     t.text     "topics"
     t.text     "polititians"
     t.text     "comment"
-    t.string   "contact"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.integer  "user_id"
   end
 
   create_table "materials_polititians", :id => false, :force => true do |t|
