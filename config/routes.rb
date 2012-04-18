@@ -1,4 +1,6 @@
 Slibujeme::Application.routes.draw do
+  # devise_for :users
+
   resources :materials, :except => [:destroy] do
     get :autocomplete_municipality_title, :on => :collection
     get :autocomplete_polititian_name, :on => :collection
