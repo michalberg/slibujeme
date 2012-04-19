@@ -38,11 +38,10 @@
 
 
 <h2>Popis dokumentů</h2>
-
   <div id="material-form-metadata">
       <p>
           <%= f.label :election_id %>
-          <%= f.collection_select :election_id, Election.all, 'id', 'title' %>
+          <%= f.collection_select :election_id, Election.all, 'id', 'title', :include_blank => true %>
       </p>
       
       <p>
@@ -70,10 +69,22 @@
           <%= f.text_area :comment %>
       </p>
       
-      <p>
-          <%= f.label :contact %>
-          <%= f.text_field :contact %>
-      </p>
+      <% if !user_signed_in? %>
+          <%= fields_for :user do |user_builder| -%>        
+          <div class="control-group<% if @user.errors.messages[:email] %> error<% end %>">
+              <%= user_builder.label :email, "Kontakt" %>
+              <div class="controls">
+                <%= user_builder.text_field :email %>
+                <% @user.errors.messages[:email].each do |msg| %>
+                <span class="help-inline"><%= msg %></span><br>            
+                <% end %>
+              </div>
+          </div>
+          <% end %>
+      <% else %>
+        Jste přihlášen(a) a dokument nahrajete jako <strong><%= current_user.email %></strong>. <%= link_to "Odhlásit", destroy_user_session_path, :method => :delete %>
+      <% end %>
+
       <p id="material-form-controls">
           <%= f.submit "Vložit", class: "btn success big violet" %>
       </p>

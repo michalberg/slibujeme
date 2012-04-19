@@ -1,4 +1,10 @@
-<%= flash[:notice]%>
+<% if flash[:notice] %>
+<div class="alert alert-success">
+  <a class="close" data-dismiss="alert">×</a>
+  <strong>Vše proběhlo v pořádku!</strong> <%= flash[:notice]%>
+</div>
+<% end %>
+
 <% @subpage = true %>
 <p><a href="javascript: history.go(-1)">Zpět na vyhledávání</a></p>
 	<p class="toright"><a href="#">nahlásit závadný obsah</a> | <a href="#">upravit dokument</a></p>

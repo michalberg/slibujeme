@@ -23,6 +23,11 @@ FactoryGirl.define do
     sequence(:name, 12345) { |n| "Politik no. #{n}"}
   end
   
+  factory :user do
+    sequence(:email) { |n| "email-#{n}@domain.tld" }
+    password "password"
+  end
+  
   factory :material do
     association :election, factory: :election
     association :party, factory: :party
@@ -35,6 +40,5 @@ FactoryGirl.define do
       material.association(:polititian)
     ]}
     comment "Komentář k dokumentu"
-    sequence(:contact) { |n| "example-#{n}@domain.tld" }
   end
 end

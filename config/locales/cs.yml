@@ -1,5 +1,12 @@
 cs:
   activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "E-mail je nutné vyplnit"
+              invalid: "E-mail není v požadovaném tvaru uzivatel@domena.xy"
     models:
       material: Dokument
     attributes:
@@ -10,7 +17,6 @@ cs:
         topic_ids: Témata
         polititians: Osoby
         comment: Komentář
-        contact: Kontakt
       image_asset:
         image: Fotka
   helpers:
