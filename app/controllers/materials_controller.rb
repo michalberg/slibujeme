@@ -51,16 +51,6 @@ class MaterialsController < ApplicationController
   end
 
   private
-  # def sign_user_from_new_material_contact!(contact)
-  #   unless current_user
-  #     user = User.find_by_email(contact.email)
-  #     if !user
-  #       user = User.create(:email => contact.email, :password => Devise.friendly_token.first(6))
-  #     end
-  #     
-  #     sign_in(:user, user)
-  #   end    
-  # end
   
   def find_or_instantiate_user
     return @user = current_user if current_user
