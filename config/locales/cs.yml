@@ -7,6 +7,14 @@ cs:
             email:
               blank: "E-mail je nutné vyplnit"
               invalid: "E-mail není v požadovaném tvaru uzivatel@domena.xy"
+        material:
+          attributes:
+            municipality:
+              blank: "Je nutné zadat obec"
+            election:
+              blank: "Je nutné zadat volby"
+            party:
+              blank: "Je nutné zadat stranu"
     models:
       material: Dokument
     attributes:
