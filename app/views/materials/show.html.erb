@@ -15,24 +15,45 @@
 	<li><a href="#" class="label tag select"><%= @material.municipality.full_title %></a></li>
 	<li><a href="#" class="label tag select"><%= @material.party.title %></a></li>
 </ul>
+<% if @material.topics.any? %>
 <h3 class="type">Témata</h3>
 <ul class="list">
     <% @material.topics.each do |topic| %>
 	<li><a href="#" class="label tag select"><%= topic.title %></a></li>
     <% end %>
 </ul>
+<% end %>
+
+<% if @material.polititians.any? %>
 <h3 class="type">Osoby</h3>
 <ul class="list">
     <% @material.polititians.each do |person| %>
 	<li><a href="#" class="label tag select"><%= person.name %></a></li>
 	<% end %>
 </ul>
+<% end %>
 <br class="clear" />
 <hr />
 <p class="center">
     <% @material.image_assets.each do |img| %>
-    <%= image_tag(img.image(:detail))%><br>
+    <div class="material_image_asset">
+        <%= image_tag(img.image(:detail))%><br>
+    </div>
 	<% end %>
+	
+	<% @material.video_assets.each do |video| %>
+	<div class="material_video_asset video_<%= video.video_service.downcase %>">
+	    <% if video.video_service == VideoAsset::SERVICE_YOUTUBE %>
+	    <iframe class="youtube-player" type="text/html" width="640" height="385" 
+	        src="http://www.youtube.com/embed/<%= video.video_id %>" frameborder="0">
+        </iframe>
+        <% elsif video.video_service == VideoAsset::SERVICE_VIMEO %>
+        <iframe src="http://player.vimeo.com/video/<%= video.video_id %>" width="640" height="385" frameborder="0"></iframe>
+	    <% else %>
+	    <%= video.user_code %>
+        <% end %>
+    </div>
+    <% end %>
 </p>
 <br class="clear" />
 <p><a href="javascript: history.go(-1)">Zpět na vyhledávání</a></p>

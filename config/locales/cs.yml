@@ -27,6 +27,8 @@ cs:
         comment: Komentář
       image_asset:
         image: Fotka
+      video_asset:
+        user_code: Odkaz na video
   helpers:
     back: Zpět
     show: Zobrazit

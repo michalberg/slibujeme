@@ -17,6 +17,7 @@ class MaterialsController < ApplicationController
     @material = Material.new
     @user = current_user || User.new
     2.times { @material.image_assets.build }
+    @material.video_assets.build
   end
 
   # POST /materials
