@@ -18,5 +18,6 @@
  *= require chosen
  *= require jquery.tagsinput
  *= require materials
+ *= require homepage
  *= require_self
 */

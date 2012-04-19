@@ -1,4 +1,5 @@
 Slibujeme::Application.routes.draw do
+  root :to => 'homepage#index'
   devise_for :users
 
   resources :materials, :except => [:destroy] do
