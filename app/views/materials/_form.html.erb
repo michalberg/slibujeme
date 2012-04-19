@@ -46,7 +46,7 @@
       
       <p>
           <%= f.label :municipality_id %>
-          <%= autocomplete_field_tag :municipality_name, "", autocomplete_municipality_title_materials_path, :id_element => "#material_municipality_id" %>
+          <%= autocomplete_field_tag :municipality_name, params[:municipality_name], autocomplete_municipality_title_materials_path, :id_element => "#material_municipality_id" %>
           <%= f.hidden_field :municipality_id %>
       </p>
       <p>
@@ -61,7 +61,7 @@
       
       <p>
           <%= f.label :polititians %>
-          <%= text_field_tag :material_polititians, nil, { "data-uri" => autocomplete_polititian_name_materials_path } %>
+          <%= text_field_tag :material_polititians, params[:material_polititians], { "data-uri" => autocomplete_polititian_name_materials_path } %>
       </p>
       
       <p>
