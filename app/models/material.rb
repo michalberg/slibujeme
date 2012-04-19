@@ -8,4 +8,8 @@ class Material < ActiveRecord::Base
   has_many :image_assets
   accepts_nested_attributes_for :image_assets, :allow_destroy => true #, :reject_if => lambda { |a| a[:image].blank? }
   accepts_nested_attributes_for :user, :allow_destroy => false
+  
+  validates :municipality, :presence => true
+  validates :election, :presence => true
+  validates :party, :presence => true
 end

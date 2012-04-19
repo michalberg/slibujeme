@@ -39,20 +39,42 @@
 
 <h2>Popis dokumentů</h2>
   <div id="material-form-metadata">
-      <p>
+      <div class="control-group<% if @material.errors.messages[:election] %> error<% end %>">
           <%= f.label :election_id %>
-          <%= f.collection_select :election_id, Election.all, 'id', 'title', :include_blank => true %>
-      </p>
+          <div class="controls">
+              <%= f.collection_select :election_id, Election.all, 'id', 'title', :include_blank => true %>
+              <% if @material.errors.messages[:election] %>
+              <% @material.errors.messages[:election].each do |msg| %>
+                <span class="help-inline"><%= msg %></span><br>            
+              <% end %>
+              <% end %>
+          </div>
+      </div>
       
-      <p>
+      <div class="control-group<% if @material.errors.messages[:municipality] %> error<% end %>">
           <%= f.label :municipality_id %>
-          <%= autocomplete_field_tag :municipality_name, params[:municipality_name], autocomplete_municipality_title_materials_path, :id_element => "#material_municipality_id" %>
-          <%= f.hidden_field :municipality_id %>
-      </p>
-      <p>
+          <div class="controls">
+              <%= autocomplete_field_tag :municipality_name, params[:municipality_name], autocomplete_municipality_title_materials_path, :id_element => "#material_municipality_id" %>
+              <%= f.hidden_field :municipality_id %>
+              <% if @material.errors.messages[:municipality] %>
+              <% @material.errors.messages[:municipality].each do |msg| %>
+              <span class="help-inline"><%= msg %></span><br>            
+              <% end %>
+              <% end %>
+          </div>
+      </div>
+      
+      <div class="control-group<% if @material.errors.messages[:party] %> error<% end %>">
           <%= f.label :party_id %>
-          <%= f.collection_select :party_id, Party.all, 'id', 'title' %>
-      </p>
+          <div class="controls">
+              <%= f.collection_select :party_id, Party.all, 'id', 'title', :include_blank => true %>
+              <% if @material.errors.messages[:party] %>
+              <% @material.errors.messages[:party].each do |msg| %>
+                <span class="help-inline"><%= msg %></span><br>            
+              <% end %>
+              <% end %>
+          </div>
+      </div>
       
       <p>
           <%= f.label :topic_ids %>
