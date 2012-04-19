@@ -41,4 +41,8 @@ FactoryGirl.define do
     ]}
     comment "Komentář k dokumentu"
   end
+
+  factory :image_asset do
+    image { Rack::Test::UploadedFile.new(Rails.root.join(*%w[factories files image_asset_fixture.png]), "image/png") }
+  end
 end
