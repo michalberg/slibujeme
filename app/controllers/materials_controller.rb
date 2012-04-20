@@ -1,10 +1,13 @@
 class MaterialsController < ApplicationController
   autocomplete :municipality, :title, :display_value => :full_title, :extra_data => [:ancestry]
   autocomplete :polititian, :name
-  
+
   before_filter :find_or_instantiate_user, :only => [:create]
 
   def index
+    title = /(^[^\(]+)/.match(params[:q])[1].strip
+    @q = Material.search(:municipality_title_start => title, :party_title_start => title, :m => 'or')
+    @materials = @q.result
   end
 
   # GET /materials/:id
@@ -24,26 +27,26 @@ class MaterialsController < ApplicationController
   def create
     polititians = params[:material_polititians].split(",").map{|person| person.strip }.uniq
     @material = Material.new(params[:material])
-    
+
     respond_to do |format|
       if @material.valid? && @user.valid?
-        
+
         # save polititians
         polititians.each do |name|
           @material.polititians << Polititian.find_or_create_by_name(name)
         end
-        
+
         # possibly create and save user
         # sign_user_from_new_material_contact!(@contact)
         sign_in(:user, @user)
         @material.user = @user
-        
+
         # save material
         @material.save
         format.html { redirect_to @material, :notice => t("notice.material.created") }
       else
         2.times { @material.image_assets.build }
-        format.html do 
+        format.html do
           flash[:alert] = t("alert.material.not_created")
           render action: "new"
         end
@@ -52,7 +55,7 @@ class MaterialsController < ApplicationController
   end
 
   private
-  
+
   def find_or_instantiate_user
     return @user = current_user if current_user
     @user = User.find_by_email(params[:user][:email])

@@ -1,2 +1,22 @@
-<h1>Materials#index</h1>
-<p>Find me in app/views/materials/index.html.erb</p>
+<% @social = false %>
+<div id="posp_add" style="padding:20px;">
+    <% @materials.each do |mat| %>
+    <div id="material-row" style="width:100%;float:left;">
+		<a href="<%= material_path(mat) %>">
+		    <%= render_asset_for_random_material(mat)%>
+		</a>
+		<p>
+			<span class="item">Volby:</span><br />
+			<a href="<%= material_path(mat) %>"><%= mat.election.title %></a>
+		</p>
+		<p>
+			<span class="item">Strana:</span><br />
+			<a href="<%= material_path(mat) %>"><%= mat.party.title %></a>
+		</p>
+		<p>
+			<span class="item">Obec:</span><br />
+			<a href="<%= material_path(mat) %>"><%= mat.municipality.full_title %></a>
+		</p>
+	</div>
+    <% end %>
+</div>
