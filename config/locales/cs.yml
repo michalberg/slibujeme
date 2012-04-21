@@ -11,6 +11,10 @@ cs:
           attributes:
             title:
               blank: "Je nutné vyplnit název"
+        party:
+          attributes:
+            title:
+              blank: "Je nutné vyplnit název"
             
         material:
           attributes:
@@ -38,6 +42,9 @@ cs:
       topic:
         title: Název
         parent_id: Nadřazené téma
+      party:
+        title: Zkratka
+        full_title: Celý název
   helpers:
     back: Zpět
     show: Zobrazit
@@ -50,6 +57,10 @@ cs:
       created: "Téma bylo úspěšně přidáno"
       updated: "Změny tématu byly uloženy."
       deleted: "Téma bylo smazáno."
+    party:
+      created: "Strana byla úspěšně přidána"
+      updated: "Změny u strany byly uloženy."
+      deleted: "Strana byla smazána."
   alert:
     material:
       not_created: "Při přidávání materiálu se objevily chyby."
@@ -57,6 +68,10 @@ cs:
       not_created: "Při přidávání tématu se objevily chyby."
       not_updated: "Při ukládání změn tématu došlo k chybě."
       not_deleted: "Téma nelze smazat - je přiřazeno k některému z materiálů"
+    party:
+      not_created: "Při přidávání strany se objevily chyby."
+      not_updated: "Při ukládání změn u strany došlo k chybě."
+      not_deleted: "Stranu nelze smazat - je přiřazena k některému z materiálů"
     authorization:
       not_admin:  "Pro přistup sem nemáte dostatenčné oprávnění"
   helpers:

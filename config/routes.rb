@@ -11,6 +11,7 @@ Slibujeme::Application.routes.draw do
   
   namespace :admin do
     resources :topics, :except => [:show]
+    resources :parties, :except => [:show]
   end
   # The priority is based upon order of creation:
   # first created -> highest priority.
