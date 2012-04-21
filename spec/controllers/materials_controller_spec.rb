@@ -1,9 +1,14 @@
 require 'spec_helper'
 
 describe MaterialsController do
-  describe "GET 'index'" do
-    it "returns http success" do
-      get 'index'
+  describe "GET 'search'" do
+    it "without search query redirects to root_path" do
+      get 'search'
+      response.should redirect_to(root_path)
+    end
+
+    it "returns http success with search query" do
+      get 'search', {:q => "Brno"}
       response.should be_success
     end
   end
@@ -27,8 +32,8 @@ describe MaterialsController do
     let(:material) { build(:material, :id => 1) }
     let(:user) { build(:user) }
     it "redirects to material detail" do
-      attrs = { 
-        "material" => material.attributes.delete_if { |_, val| !val }, 
+      attrs = {
+        "material" => material.attributes.delete_if { |_, val| !val },
         "user" => {"email" => user.email},
         "material_polititians" => "Politik1, Politik2"
       }

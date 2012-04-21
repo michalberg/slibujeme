@@ -6,6 +6,10 @@ class MaterialsController < ApplicationController
   before_filter :process_search_params, :only => [:advanced_search]
 
   def search
+    unless params.has_key?("q")
+      redirect_to root_path
+      return
+    end
     title = /(^[^\(]+)/.match(params[:q])[1].strip
     @q = Material.search(:municipality_title_start => title, :party_title_start => title, :m => 'or')
     @materials = @q.result
