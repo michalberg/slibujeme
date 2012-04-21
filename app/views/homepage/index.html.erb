@@ -5,16 +5,16 @@
 		$( "#index-search-text" ).autocomplete({
 			delay: 0,
 			minLength: 2,
-			source: "\/www\/oblasti\/data-source"
+			source: "<%= autocomplete_municipality_title_materials_path %>"
 		});
 	});
 	</script>
-	<form action="/vypis.html" method="post">
-		<input type="text" id="index-search-text" value="obec nebo strana" />
-		<input type="submit" id="index-search-submit" value="Hledat" class="btn violet" />
-	</form>
+	<%= form_tag(search_materials_path, {:method => "get"}) do %>
+	    <%= text_field_tag :q, nil, {:id => "index-search-text", :placeholder => "obec nebo strana"} %>
+		<%= submit_tag "Hledat", {:class => "btn violet",:id => "index-search-submit"} %>
+	<% end %>
 	<%# TODO <p class="from">Myslíme si, že jsi z obce <a href="#">Brno</a>.</p>#%>
-	<p class="detailed"><a href="#">Podrobné hledání</a></p>
+	<p class="detailed"><%= link_to "Podrobné hledání", advanced_search_materials_path %></p>
 </div>
 <div id="index-upload">
 	<h2>Vložte sliby z vaší obce</h2>
@@ -53,7 +53,7 @@
 				<span class="item">Obec:</span><br />
 				<a href="<%= material_path(@random_material) %>"><%= @random_material.municipality.full_title %></a>
 			</p>
-		</div> 
+		</div>
 	</div>
 </div>
 <% @social = true %>
