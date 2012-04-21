@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Admin::TopicsController do
   before(:each) do
-    @user = create(:user)
+    @user = create(:admin_user)
     sign_in @user
   end
 

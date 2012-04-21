@@ -57,6 +57,8 @@ cs:
       not_created: "Při přidávání tématu se objevily chyby."
       not_updated: "Při ukládání změn tématu došlo k chybě."
       not_deleted: "Téma nelze smazat - je přiřazeno k některému z materiálů"
+    authorization:
+      not_admin:  "Pro přistup sem nemáte dostatenčné oprávnění"
   helpers:
     submit:
       create: Přidat
