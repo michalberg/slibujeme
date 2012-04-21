@@ -1,0 +1,23 @@
+<%= form_for [:admin, @topic] do |f| -%>
+  <div class="control-group<% if @topic.errors.messages[:title] %> error<% end %>">
+      <%= f.label :title %>
+      <div class="controls">
+          <%= f.text_field :title %>
+          <% if @topic.errors.messages[:title] %>
+            <% @topic.errors.messages[:title].each do |msg| %>
+            <span class="help-inline"><%= msg %></span><br>            
+            <% end %>
+          <% end %>
+      </div>
+  </div>
+  <div class="control-group">
+      <%= f.label :parent_id %>
+      <div class="controls">
+          <%= f.collection_select :parent_id, Topic.roots, 'id', 'title', :include_blank => true %>
+      </div>
+  </div>
+  <div class="form-actions">
+      <%= f.submit :class => "btn btn-primary" %>
+      <%= link_to '<i class="icon-arrow-left"></i> Zpět'.html_safe , admin_topics_path, :class => "btn" %>
+  </div>
+<% end -%>

@@ -1,0 +1,19 @@
+<tr>
+    <td style="padding-left:<%= 20 * topic.depth %>px;">
+        <% if (topic.is_root?) %><strong><% end %>
+        <%= (" &mdash; " * topic.depth).html_safe  %><%= topic.title %>
+        <% if (topic.is_root?) %></strong><% end %>
+    </td>
+    <td>
+        <div class="btn-group">
+            <% if topic.is_root? %>
+            <%= link_to '<i class="icon-pencil"></i>'.html_safe, new_admin_topic_path(:parent_id => topic.id), :class => "btn" %>
+            <% end %>
+            <%= link_to '<i class="icon-edit"></i>'.html_safe, edit_admin_topic_path(topic), :class => "btn btn-small" %>
+            <%= link_to '<i class="icon-trash icon-white"></i>'.html_safe, admin_topic_path(topic), :method => :delete, :class => "btn btn-small btn-danger", :confirm => "Opravdu chcete téma \"#{topic.title}\" smazat?" %>
+        </div>
+    </td>
+</tr>
+<% if topic.is_root? %>
+    <%= render topic.children %>
+<% end %>

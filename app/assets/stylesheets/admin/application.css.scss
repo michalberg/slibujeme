@@ -1,0 +1,25 @@
+/*
+ *= require ../bootstrap.min
+ *= require_self
+ *= require_tree .
+*/
+
+body {
+    padding-top: 50px;
+}
+
+textarea {
+    width: 420px;
+}
+
+h1 {
+  padding-bottom: 10px;
+}
+
+.btn.top-create {
+  margin-bottom: 10px;
+}
+
+.table td {
+  vertical-align: middle;
+}

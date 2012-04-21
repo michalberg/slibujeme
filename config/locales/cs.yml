@@ -7,6 +7,11 @@ cs:
             email:
               blank: "E-mail je nutné vyplnit"
               invalid: "E-mail není v požadovaném tvaru uzivatel@domena.xy"
+        topic:
+          attributes:
+            title:
+              blank: "Je nutné vyplnit název"
+            
         material:
           attributes:
             municipality:
@@ -17,6 +22,7 @@ cs:
               blank: "Je nutné zadat stranu"
     models:
       material: Dokument
+      topic: Téma
     attributes:
       material:
         election_id: Volby
@@ -29,6 +35,9 @@ cs:
         image: Fotka
       video_asset:
         user_code: Odkaz na video
+      topic:
+        title: Název
+        parent_id: Nadřazené téma
   helpers:
     back: Zpět
     show: Zobrazit
@@ -37,6 +46,20 @@ cs:
   notice:
     material:
       created: "Děkujeme za nahrání dokumentu."
+    topic:
+      created: "Téma bylo úspěšně přidáno"
+      updated: "Změny tématu byly uloženy."
+      deleted: "Téma bylo smazáno."
   alert:
     material:
       not_created: "Při přidávání materiálu se objevily chyby."
+    topic:
+      not_created: "Při přidávání tématu se objevily chyby."
+      not_updated: "Při ukládání změn tématu došlo k chybě."
+      not_deleted: "Téma nelze smazat - je přiřazeno k některému z materiálů"
+  helpers:
+    submit:
+      create: Přidat
+      update: Upravit
+    back: Zpět
+    show: Zobrazit

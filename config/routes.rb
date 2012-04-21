@@ -8,6 +8,10 @@ Slibujeme::Application.routes.draw do
     get :autocomplete_municipality_title, :on => :collection
     get :autocomplete_polititian_name, :on => :collection
   end
+  
+  namespace :admin do
+    resources :topics, :except => [:show]
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
