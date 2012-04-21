@@ -14,4 +14,14 @@ class Material < ActiveRecord::Base
   validates :municipality, :presence => true
   validates :election, :presence => true
   validates :party, :presence => true
+  
+  validate :has_at_least_one_asset_attached
+  
+  def has_at_least_one_asset_attached
+    if 
+      self.image_assets.reject(&:marked_for_destruction?).empty? and 
+      self.video_assets.reject(&:marked_for_destruction?).empty?
+      errors.add(:base, "has to have at least one")
+    end
+  end
 end

@@ -14,9 +14,14 @@ describe MaterialsController do
   end
 
   describe "GET 'show'" do
-    let(:material) { create(:material) }
+    before(:each) do
+      @material = build(:material)
+      @material.image_assets << create(:image_asset)
+      @material.save
+    end
+
     it "returns http success" do
-      get 'show', {:id => material.id}
+      get 'show', {:id => @material.id}
       response.should be_success
     end
   end
@@ -29,17 +34,18 @@ describe MaterialsController do
   end
 
   describe "POST 'create'" do
-    let(:material) { build(:material, :id => 1) }
-    let(:user) { build(:user) }
+    before(:each) do
+      @material = build(:material, :id => 1)
+    end
     it "redirects to material detail" do
       attrs = {
-        "material" => material.attributes.delete_if { |_, val| !val },
-        "user" => {"email" => user.email},
+        "material" => @material.attributes.merge({:image_assets_attributes => [attributes_for(:image_asset)]}).delete_if { |_, val| !val },
+        "user" => {"email" => "foo@bar.baz" },
         "material_polititians" => "Politik1, Politik2"
       }
 
       post 'create', attrs
-      response.should redirect_to(material_path(material.id))
+      response.should redirect_to(material_path(@material.id))
     end
   end
 end
