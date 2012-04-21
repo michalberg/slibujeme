@@ -1,0 +1,30 @@
+<div class="page-header">
+    <h1>Témata</h1>
+</div>
+<div class="span6">
+    <%= link_to '<i class="icon-pencil icon-white"></i> Nové téma'.html_safe, new_admin_topic_path, :class => 'btn btn-success' %>
+</div>
+<div class="span6">
+
+<% if @topics.any? %>
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>Název</th>
+            <th>Akce</th>
+        </tr>
+    </thead>
+    <tbody>
+    <%= render @topics %>
+    </tbody>
+</table>
+<% end %>
+<div class="row">
+    <%= link_to '<i class="icon-pencil icon-white"></i> Nové téma'.html_safe, new_admin_topic_path, :class => 'btn btn-success' %>
+</div>
+</div>
+<div class="span4 well">
+    <h2>Nápověda</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>

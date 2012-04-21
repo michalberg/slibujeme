@@ -1,0 +1,28 @@
+<%= form_for [:admin, @party] do |f| -%>
+  <div class="control-group<% if @party.errors.messages[:title] %> error<% end %>">
+      <%= f.label :title %>
+      <div class="controls">
+          <%= f.text_field :title %>
+          <% if @party.errors.messages[:title] %>
+            <% @party.errors.messages[:title].each do |msg| %>
+            <span class="help-inline"><%= msg %></span><br>            
+            <% end %>
+          <% end %>
+      </div>
+  </div>
+  <div class="control-group<% if @party.errors.messages[:full_title] %> error<% end %>">
+      <%= f.label :full_title %>
+      <div class="controls">
+          <%= f.text_field :full_title %>
+          <% if @party.errors.messages[:full_title] %>
+            <% @party.errors.messages[:full_title].each do |msg| %>
+            <span class="help-inline"><%= msg %></span><br>            
+            <% end %>
+          <% end %>
+      </div>
+  </div>
+  <div class="form-actions">
+      <%= f.submit :class => "btn btn-primary" %>
+      <%= link_to '<i class="icon-arrow-left"></i> Zpět'.html_safe , admin_parties_path, :class => "btn" %>
+  </div>
+<% end -%>

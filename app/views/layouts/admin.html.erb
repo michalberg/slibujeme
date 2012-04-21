@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<%= I18n.locale %>" lang="<%= I18n.locale %>">
+<head>
+  <title></title>
+  <%= stylesheet_link_tag    "admin/application" %>
+  <%= javascript_include_tag "admin/application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+    <div class="navbar navbar-fixed-top"> 
+      <div class="navbar-inner"> 
+        <div class="container"> 
+          <a class="brand" href="">Slibujeme</a>
+          <ul class="nav"> 
+            <li<%= (params[:controller] == "admin/topics") ? raw(' class="active"'):'' %>>
+                <%= link_to "Témata", admin_topics_path %>
+            </li> 
+            <li<%= (params[:controller] == "admin/parties") ? raw(' class="active"'):'' %>>
+                <%= link_to "Polit. strany", admin_parties_path %>
+            </li> 
+          </ul>
+          <ul class="nav pull-right"> 
+              <li><%= link_to "Odhlásit", destroy_user_session_path, :method => :delete %></li>
+          </ul>
+        </div> 
+      </div> 
+    </div> 
+    <% flash.each do |type, msg| %>
+        <div class="alert <%= translate_flash_key_to_bootstrap_class(type) %>" id="<%= type %>">
+            
+            <a class="close" data-dismiss="alert">×</a>
+            <strong>
+            <% if type == :alert %>
+            Pozor!
+            <% end %>
+            </strong>
+            <%= msg %>
+        </div>
+    <% end %>
+ 
+    <div class="container-fluid">
+      <%= yield %>
+    </div>
+
+ </body>
+</html>
