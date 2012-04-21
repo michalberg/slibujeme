@@ -1,0 +1,66 @@
+<div id="posp_add" style="padding:20px;">
+    <h1>Podrobné vyhledávání</h1>
+<%= form_tag(advanced_search_materials_path, {:method => "get"}) do %>
+    <div class="control-group">
+        <%= label_tag :m, "Obec" %>
+        <%= autocomplete_field_tag :m, params[:m], autocomplete_municipality_title_materials_path %>
+    </div>
+
+	<div class="control-group">
+          <%= label_tag :e, "Volby" %>
+          <div class="controls">
+              <%= select_tag :e, options_from_collection_for_select(Election.all, 'id', 'title', params[:e]), :include_blank => true %>
+          </div>
+      </div>
+
+      <div class="control-group">
+          <%= label_tag :p, "Strana" %>
+          <div class="controls">
+              <%= select_tag :p, options_from_collection_for_select(Party.all, 'id', 'title', params[:p]), :include_blank => true %>
+          </div>
+      </div>
+
+      <div class="control-group">
+          <%= label_tag :t, "Témata" %>
+          <div class="controls">
+              <%= select_tag :t, option_groups_from_collection_for_select(Topic.roots, :children, :title, :id, :title), {:include_blank => true, :multiple => true, "data-placeholder" => "Vyberte témata..."} %>
+          </div>
+      </div>
+
+      <div class="control-group">
+          <%= label_tag :po, "Politici" %>
+          <div class="controls">
+              <%= text_field_tag :po, params[:po], { "data-uri" => autocomplete_polititian_name_materials_path } %>
+          </div>
+      </div>
+
+      <div class="actions">
+          <%= submit_tag "Hledat", {:class => "btn violet",:id => "index-search-submit"} %>
+          <%= link_to "Vymazat formulář", advanced_search_materials_path, :class => "btn" unless @search_params.empty? %>
+      </div>
+<% end %>
+<% if @materials %>
+    <div class="material-search-results">
+        <% @materials.each do |mat| %>
+           <div id="material-row" style="width:100%;float:left;">
+       		    <a href="<%= material_path(mat) %>">
+       		        <%= render_asset_for_random_material(mat)%>
+       		    </a>
+       		    <p>
+       		    	<span class="item">Volby:</span><br />
+       		    	<a href="<%= material_path(mat) %>"><%= mat.election.title %></a>
+       		    </p>
+       		    <p>
+       		    	<span class="item">Strana:</span><br />
+       		    	<a href="<%= material_path(mat) %>"><%= mat.party.title %></a>
+       		    </p>
+       		    <p>
+       		    	<span class="item">Obec:</span><br />
+       		    	<a href="<%= material_path(mat) %>"><%= mat.municipality.full_title %></a>
+       		    </p>
+       	    </div>
+        <% end %>
+    </div>
+
+<% end %>
+</div>

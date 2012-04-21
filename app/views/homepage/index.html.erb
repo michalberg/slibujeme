@@ -9,12 +9,12 @@
 		});
 	});
 	</script>
-	<%= form_tag(materials_path, {:method => "get"}) do %>
+	<%= form_tag(search_materials_path, {:method => "get"}) do %>
 	    <%= text_field_tag :q, nil, {:id => "index-search-text", :placeholder => "obec nebo strana"} %>
 		<%= submit_tag "Hledat", {:class => "btn violet",:id => "index-search-submit"} %>
 	<% end %>
 	<%# TODO <p class="from">Myslíme si, že jsi z obce <a href="#">Brno</a>.</p>#%>
-	<p class="detailed"><a href="#">Podrobné hledání</a></p>
+	<p class="detailed"><%= link_to "Podrobné hledání", advanced_search_materials_path %></p>
 </div>
 <div id="index-upload">
 	<h2>Vložte sliby z vaší obce</h2>

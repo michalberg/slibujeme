@@ -3,11 +3,18 @@ class MaterialsController < ApplicationController
   autocomplete :polititian, :name
 
   before_filter :find_or_instantiate_user, :only => [:create]
+  before_filter :process_search_params, :only => [:advanced_search]
 
-  def index
+  def search
     title = /(^[^\(]+)/.match(params[:q])[1].strip
     @q = Material.search(:municipality_title_start => title, :party_title_start => title, :m => 'or')
     @materials = @q.result
+  end
+
+  def advanced_search
+    unless @search_params.empty?
+      @materials = Material.search(@search_params.merge(:m => 'and')).result(:distinct => true)
+    end
   end
 
   # GET /materials/:id
@@ -61,6 +68,33 @@ class MaterialsController < ApplicationController
     @user = User.find_by_email(params[:user][:email])
     unless @user
       @user = User.new(:email => params[:user][:email], :password => Devise.friendly_token.first(6))
+    end
+  end
+
+  def process_search_params
+    # m(unicipality_name), po(lititian_names), e(lection_id) p(arty_id) t(opic_ids)
+
+    @search_params = {}
+    unless params[:m].blank?
+      municipality_title = /(^[^\(]+)/.match(params[:m])[1].strip
+      @search_params.merge!({:municipality_title_start => municipality_title}) unless params[:m].blank?
+    end
+
+    unless params[:po].blank?
+      polititians_names = params[:po].split(",").map{ |name| name.strip }
+      @search_params.merge!({:polititians_name_in => polititians_names.join(",")}) unless params[:po].blank?
+    end
+
+    unless params[:e].blank?
+      @search_params.merge!({:election_id_eq => params[:e]})
+    end
+
+    unless params[:p].blank?
+      @search_params.merge!({:party_id_eq => params[:p]})
+    end
+
+    unless params[:t].blank?
+      @search_params.merge!({:topics_id_in => params[:t].join(",")})
     end
   end
 end
