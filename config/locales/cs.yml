@@ -75,6 +75,7 @@ cs:
   notice:
     material:
       created: "Děkujeme za nahrání dokumentu."
+      updated: "Zmeny u dokumentu byly uloženy."
     topic:
       created: "Téma bylo úspěšně přidáno"
       updated: "Změny tématu byly uloženy."
@@ -92,6 +93,7 @@ cs:
   alert:
     material:
       not_created: "Při přidávání materiálu se objevily chyby."
+      not_updated: "Při ukládání změn dokumentu došlo k chybě."
     topic:
       not_created: "Při přidávání tématu se objevily chyby."
       not_updated: "Při ukládání změn tématu došlo k chybě."
