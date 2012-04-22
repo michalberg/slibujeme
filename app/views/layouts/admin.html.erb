@@ -23,6 +23,9 @@
             <li<%= (params[:controller] == "admin/municipalities") ? raw(' class="active"'):'' %>>
                 <%= link_to "Obce", admin_municipalities_path %>
             </li> 
+            <li<%= (params[:controller] == "admin/polititians") ? raw(' class="active"'):'' %>>
+                <%= link_to "Politici", admin_polititians_path %>
+            </li> 
           </ul>
           <ul class="nav pull-right"> 
               <li><%= link_to "Odhlásit", destroy_user_session_path, :method => :delete %></li>
