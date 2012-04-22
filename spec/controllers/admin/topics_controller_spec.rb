@@ -53,7 +53,8 @@ describe Admin::TopicsController do
       end
 
       it "refuses to delete and redirecs to index if some materials have this topic" do
-        @material = create(:material)
+        @material = build(:material)
+        @material.image_assets << create(:image_asset)
         @material.topics << @topic
         @material.save
         delete 'destroy', {:id => @topic.id}

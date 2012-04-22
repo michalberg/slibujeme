@@ -59,7 +59,8 @@ describe Admin::PartiesController do
       end
       
       it "refuses to delete party with material and redirects to index" do
-        @material = create(:material)
+        @material = build(:material)
+        @material.image_assets << create(:image_asset)        
         @material.party = @party
         @material.save
         delete 'destroy', { :id => @party.id }

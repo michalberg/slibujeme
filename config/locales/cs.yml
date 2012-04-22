@@ -24,9 +24,14 @@ cs:
               blank: "Je nutné zadat volby"
             party:
               blank: "Je nutné zadat stranu"
+        municipality:
+          attributes:
+            title:
+              blank: "Je nutné zadat jméno obce"
     models:
       material: Dokument
       topic: Téma
+      municipality: Obec
     attributes:
       material:
         election_id: Volby
@@ -45,6 +50,9 @@ cs:
       party:
         title: Zkratka
         full_title: Celý název
+      municipality:
+        title: Jméno
+        parent_id: Nadřazená obec
   helpers:
     back: Zpět
     show: Zobrazit
@@ -61,6 +69,10 @@ cs:
       created: "Strana byla úspěšně přidána"
       updated: "Změny u strany byly uloženy."
       deleted: "Strana byla smazána."
+    municipality:
+      created: "Obec byla úspěšně přidána"
+      updated: "Změny u obce byly uloženy."
+      deleted: "Obec byla smazána."      
   alert:
     material:
       not_created: "Při přidávání materiálu se objevily chyby."
@@ -72,6 +84,10 @@ cs:
       not_created: "Při přidávání strany se objevily chyby."
       not_updated: "Při ukládání změn u strany došlo k chybě."
       not_deleted: "Stranu nelze smazat - je přiřazena k některému z materiálů"
+    municipality:
+      not_created: "Při přidávání obce se objevily chyby."
+      not_updated: "Při ukládání změn u obce došlo k chybě."
+      not_deleted: "Obec nelze smazat - je přiřazena k některému z materiálů"      
     authorization:
       not_admin:  "Pro přistup sem nemáte dostatenčné oprávnění"
   helpers:
