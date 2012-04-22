@@ -16,10 +16,9 @@
         </p>
     </div>
 	<div id="tabs-3">
-        <p>
-            <label for="">Odkaz na článek</label>
-            <input class="text" type="text" name="" id="" value="" />
-        </p>
+        <%= f.fields_for :url_assets do |builder| %>	
+	        <%= render "url_asset_fields", :f => builder %>
+        <% end %>
 	</div>
 	<div id="tabs-2">
 	    <%= f.fields_for :video_assets do |builder| %>	
@@ -28,7 +27,15 @@
 	</div>
 	
 </div>
- 
+
+<% if @material.errors.messages[:base] %>
+<% @material.errors.messages[:base].each do |msg| %>
+  <div class="alert alert-error" style="margin-top: 14px;">
+    <a class="close" data-dismiss="alert">×</a>
+    <%= msg %>
+  </div>           
+<% end %>
+<% end %>
 <script>
   $(function () {
     $( "#tabs" ).tabs();

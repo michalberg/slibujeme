@@ -32,6 +32,7 @@ class MaterialsController < ApplicationController
     @user = current_user || User.new
     2.times { @material.image_assets.build }
     @material.video_assets.build
+    @material.url_assets.build
   end
 
   # POST /materials
@@ -57,6 +58,8 @@ class MaterialsController < ApplicationController
         format.html { redirect_to @material, :notice => t("notice.material.created") }
       else
         2.times { @material.image_assets.build }
+        @material.video_assets.build if @material.video_assets.empty?
+        @material.url_assets.build if @material.url_assets.empty?      
         format.html do
           flash[:alert] = t("alert.material.not_created")
           render action: "new"

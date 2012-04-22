@@ -54,6 +54,15 @@
         <% end %>
     </div>
     <% end %>
+    
+    <% if @material.url_assets.any? %>
+    <h3>Odkazy</h3>
+    <ul>
+    <% @material.url_assets.each do |asset| %>
+        <li><%= link_to asset.url, asset.url %></li>
+    <% end %>
+    </ul>
+    <% end %>
 </p>
 <br class="clear" />
 <p><a href="javascript: history.go(-1)">Zpět na vyhledávání</a></p>
