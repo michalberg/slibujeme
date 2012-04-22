@@ -14,6 +14,9 @@
         <div class="container"> 
           <a class="brand" href="">Slibujeme</a>
           <ul class="nav"> 
+            <li<%= (params[:controller] == "admin/materials") ? raw(' class="active"'):'' %>>
+                <%= link_to "Dokumenty", admin_materials_path %>
+            </li> 
             <li<%= (params[:controller] == "admin/topics") ? raw(' class="active"'):'' %>>
                 <%= link_to "Témata", admin_topics_path %>
             </li> 

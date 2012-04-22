@@ -16,4 +16,5 @@
 //= require jquery-ui-1.8.16.custom.min
 //= require chosen.jquery.min
 //= require jquery.tagsinput.min
-//= require_tree .
+//= require bootstrap.min
+//= require materials

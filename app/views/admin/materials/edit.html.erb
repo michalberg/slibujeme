@@ -1,0 +1,44 @@
+<div class="page-header">
+<h1>Editace dokumentu ID:<%= @material.id %></h1>
+</div>
+
+<div class="span6">
+    
+    <%= render "form" %>
+</div>
+
+<div class="span4">
+    <h2>Dokumenty</h2>
+    <div class="admin-material-assets">
+        <% if @material.image_assets.any? %>
+        <h3>Fotky</h3>
+        <% @material.image_assets.each do |asset| %>
+            <%= image_tag(asset.image(:thumb))%><br>
+        <% end %>
+        <% end %>
+        
+        <% if @material.video_assets.any? %>
+        <h3>Videa</h3>
+        <% @material.video_assets.each do |asset| %>
+            <% if asset.video_service == VideoAsset::SERVICE_YOUTUBE %>
+    	    <iframe class="youtube-player" type="text/html" width="640" height="385" 
+    	        src="http://www.youtube.com/embed/<%= asset.video_id %>" frameborder="0">
+            </iframe>
+            <% elsif asset.video_service == VideoAsset::SERVICE_VIMEO %>
+            <iframe src="http://player.vimeo.com/video/<%= asset.video_id %>" width="640" height="385" frameborder="0"></iframe>
+    	    <% else %>
+    	    <%= asset.user_code %>
+            <% end %>
+        <% end %>
+        <% end %>
+        
+        <% if @material.url_assets.any? %>
+        <h3>Odkazy</h3>
+        <ul>
+        <% @material.url_assets.each do |asset| %>
+            <li><%= link_to asset.url, asset.url %></li>
+        <% end %>
+        </ul>
+        <% end %>
+    </div>
+</div>

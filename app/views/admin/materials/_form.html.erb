@@ -1,0 +1,62 @@
+<%= form_for [:admin, @material] do |f| -%>
+    <%= debug @material.errors.messages %>
+  <div id="material-form-metadata">
+      <div class="control-group<% if @material.errors.messages[:election] %> error<% end %>">
+          <%= f.label :election_id %>
+          <div class="controls">
+              <%= f.collection_select :election_id, Election.all, 'id', 'title', :include_blank => true %>
+              <% if @material.errors.messages[:election] %>
+              <% @material.errors.messages[:election].each do |msg| %>
+                <span class="help-inline"><%= msg %></span><br>            
+              <% end %>
+              <% end %>
+          </div>
+      </div>
+      
+      <div class="control-group<% if @material.errors.messages[:municipality] %> error<% end %>">
+          <%= f.label :municipality_id %>
+          <div class="controls">
+              <% name = (params[:municipality_name])? params[:municipality_name] : @material.municipality.full_title %>
+              <%= autocomplete_field_tag :municipality_name, name, autocomplete_municipality_title_materials_path, :id_element => "#material_municipality_id" %>
+              <%= f.hidden_field :municipality_id %>
+              <% if @material.errors.messages[:municipality] %>
+              <% @material.errors.messages[:municipality].each do |msg| %>
+              <span class="help-inline"><%= msg %></span><br>            
+              <% end %>
+              <% end %>
+          </div>
+      </div>
+      
+      <div class="control-group<% if @material.errors.messages[:party] %> error<% end %>">
+          <%= f.label :party_id %>
+          <div class="controls">
+              <%= f.collection_select :party_id, Party.all, 'id', 'title', :include_blank => true %>
+              <% if @material.errors.messages[:party] %>
+              <% @material.errors.messages[:party].each do |msg| %>
+                <span class="help-inline"><%= msg %></span><br>            
+              <% end %>
+              <% end %>
+          </div>
+      </div>
+      
+      <p>
+          <%= f.label :topic_ids %>
+          <%= f.grouped_collection_select :topic_ids, Topic.roots, :children, :title, :id, :title, {:include_blank => true}, {:multiple => true, "data-placeholder" => "Vyberte témata..."} %>
+      </p>
+      
+      <p>
+          <%= f.label :polititians %>
+          <% polititians = (params[:material_polititians]) ? params[:material_polititians] : @material.polititians.collect(&:name).join(",")%>
+          <%= text_field_tag :material_polititians, polititians, { "data-uri" => autocomplete_polititian_name_materials_path } %>
+      </p>
+      
+      <p>
+          <%= f.label :comment %>
+          <%= f.text_area :comment %>
+      </p>
+
+      <p id="material-form-controls">
+          <%= f.submit "Vložit", class: "btn success big violet" %>
+      </p>
+  </div>
+<% end -%>

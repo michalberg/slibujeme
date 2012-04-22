@@ -17,7 +17,7 @@ class Material < ActiveRecord::Base
   validates :election, :presence => true
   validates :party, :presence => true
   
-  validate :has_at_least_one_asset_attached
+  validate :has_at_least_one_asset_attached, :on => :create
   
   def has_at_least_one_asset_attached
     if 
