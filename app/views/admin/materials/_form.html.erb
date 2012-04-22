@@ -1,5 +1,4 @@
 <%= form_for [:admin, @material] do |f| -%>
-    <%= debug @material.errors.messages %>
   <div id="material-form-metadata">
       <div class="control-group<% if @material.errors.messages[:election] %> error<% end %>">
           <%= f.label :election_id %>
