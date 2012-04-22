@@ -16,6 +16,13 @@ Slibujeme::Application.routes.draw do
     resources :polititians, :only => [:index, :edit, :update]
     resources :materials, :only => [:index, :edit, :update]
   end
+  
+  namespace :api do
+    namespace :v1 do
+      resources :parties, :only => [:index]
+      resources :materials, :only => [:index]
+    end
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
