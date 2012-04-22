@@ -17,6 +17,7 @@ cs:
               blank: "Je nutné vyplnit název"
             
         material:
+          at_least_one_asset: "Je nutné zadat alespoň jeden obrázek, odkaz nebo video"
           attributes:
             municipality:
               blank: "Je nutné zadat obec"
@@ -32,6 +33,10 @@ cs:
           attributes:
             name:
               blank: "Je nutné vyplnit jméno"
+        url_asset:
+          attributes:
+            url:
+              invalid: "Doména není ve správném formátu (http://domena.tld)"
     models:
       material: Dokument
       topic: Téma
@@ -60,6 +65,8 @@ cs:
         parent_id: Nadřazená obec
       polititian:
         name: Jméno
+      url_asset:
+        url: Odkaz na článek
   helpers:
     back: Zpět
     show: Zobrazit
