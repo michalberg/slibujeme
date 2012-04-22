@@ -13,6 +13,7 @@ Slibujeme::Application.routes.draw do
     resources :topics, :except => [:show]
     resources :parties, :except => [:show]
     resources :municipalities, :except => [:show]
+    resources :polititians, :only => [:index, :edit, :update]
   end
   # The priority is based upon order of creation:
   # first created -> highest priority.
