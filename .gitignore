@@ -14,5 +14,6 @@
 /log/*.log
 /tmp
 /public/system/image_assets/*
+/public/system/video_assets/*
 
 !*.gitkeep

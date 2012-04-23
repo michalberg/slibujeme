@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120422080327) do
+ActiveRecord::Schema.define(:version => 20120423062323) do
 
   create_table "elections", :force => true do |t|
     t.string   "title"
@@ -119,8 +119,12 @@ ActiveRecord::Schema.define(:version => 20120422080327) do
     t.string   "video_id"
     t.string   "video_service"
     t.integer  "material_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
+    t.string   "thumbnail_file_name"
+    t.string   "thumbnail_content_type"
+    t.integer  "thumbnail_file_size"
+    t.datetime "thumbnail_updated_at"
   end
 
 end
