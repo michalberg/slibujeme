@@ -13,9 +13,11 @@ class VideoAsset < ActiveRecord::Base
   
   belongs_to :material
   
-  attr_accessible :user_code
+  attr_accessible :user_code, :thumbnail
   
-  before_save :parse_video_id_and_type!
+  before_save :parse_video_id_and_type!, :scrape_video_thumbnail!
+  
+  has_attached_file :thumbnail, :styles => { :thumb => "220x220!" , :detail => "640x385>" }
   
   def parse_video_id_and_type!
     if self.user_code.blank?
@@ -31,5 +33,24 @@ class VideoAsset < ActiveRecord::Base
     else
       self.video_service = SERVICE_OTHER
     end
+  end
+  
+  def scrape_video_thumbnail!
+    require "open-uri"
+    if self.video_service == SERVICE_YOUTUBE
+      url = "http://img.youtube.com/vi/#{self.video_id}/0.jpg"
+    elsif self.video_service == SERVICE_VIMEO
+      raw_data = open("http://vimeo.com/api/v2/video/#{self.video_id}.json") {|f| raw_data = f.read() }
+      data = JSON.parse(raw_data)
+      url = data.shift["thumbnail_large"]
+    else
+      return true
+    end
+    io = open(url)
+    def io.original_filename
+      "thumb.png"
+    end
+    self.thumbnail = io
+    return true
   end
 end
