@@ -3,8 +3,7 @@ Feature: Submitting material
   As a user
   I want use a form for it
 
-  @javascript
-  Scenario: Submitting material
+  Background:
     Given there are the following elections:
       | title              |
       | krajské volby 2012 |
@@ -24,6 +23,10 @@ Feature: Submitting material
       | 4  | Podnikání    |           |
       | 5  | Zaměstnanost | 4         |
     And I am on the material submit page
+    
+  @javascript
+  Scenario: Submitting material with article url
+    When I fill in "Odkaz na článek" with "http://www.google.com"
     When I select "krajské volby 2012" from "Volby"
     And I type in "Brn" into autocomplete list "municipality_name" and I choose "Brno (okr. Brno-město)"
     And I select "ODS" from "Strana"
@@ -46,3 +49,8 @@ Feature: Submitting material
     And I should see "Zaměstnanost"
     And I should see "Jiří Paroubek"
     And I should see "Josef Dobeš"
+    
+  Scenario: Submitting material with video  
+    
+  Scenario: Submitting material with multiple images
+  
