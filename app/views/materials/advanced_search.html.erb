@@ -1,4 +1,4 @@
-<div id="posp_add" style="padding:20px;">
+<% @subpage = true %>
     <h1>Podrobné vyhledávání</h1>
 <%= form_tag(advanced_search_materials_path, {:method => "get"}) do %>
     <div class="control-group">
@@ -6,7 +6,7 @@
         <%= autocomplete_field_tag :m, params[:m], autocomplete_municipality_title_materials_path %>
     </div>
 
-	<div class="control-group">
+    <div class="control-group">
           <%= label_tag :e, "Volby" %>
           <div class="controls">
               <%= select_tag :e, options_from_collection_for_select(Election.all, 'id', 'title', params[:e]), :include_blank => true %>
@@ -40,27 +40,32 @@
       </div>
 <% end %>
 <% if @materials %>
-    <div class="material-search-results">
-        <% @materials.each do |mat| %>
-           <div id="material-row" style="width:100%;float:left;">
-       		    <a href="<%= material_path(mat) %>">
-       		        <%= render_asset_for_random_material(mat)%>
-       		    </a>
-       		    <p>
-       		    	<span class="item">Volby:</span><br />
-       		    	<a href="<%= material_path(mat) %>"><%= mat.election.title %></a>
-       		    </p>
-       		    <p>
-       		    	<span class="item">Strana:</span><br />
-       		    	<a href="<%= material_path(mat) %>"><%= mat.party.title %></a>
-       		    </p>
-       		    <p>
-       		    	<span class="item">Obec:</span><br />
-       		    	<a href="<%= material_path(mat) %>"><%= mat.municipality.full_title %></a>
-       		    </p>
-       	    </div>
-        <% end %>
+    <div id="promise-grid">
+        <ul>
+            <% @materials.each do |mat| %>
+            <li>
+                <a href="<%= material_path(mat) %>">
+                    <%= render_asset_for_random_material(mat)%>
+                </a>
+                <div class="tags">
+                    <p>
+                        <span class="item">Strana:</span><br />
+                        <%= mat.party.title %>
+                    </p>
+                    <p>
+                        <span class="item">Lidé:</span><br />
+                        <%= mat.polititians.collect(&:name).join(", ") %>
+                    </p>
+                    <p>
+                        <span class="item">Témata:</span><br />
+                         <% mat.topics.each do |t| %>
+                        <%= t.title %>
+                        <% end %>
+                    </p>
+                </div>
+                <div class="toright"><a href="<%= material_path(mat) %>" class="btn message">Detail</a></div>
+            </li>
+            <% end %>
+        </ul>
     </div>
-
 <% end %>
-</div>
