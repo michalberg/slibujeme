@@ -66,7 +66,7 @@ cs:
       polititian:
         name: Jméno
       url_asset:
-        url: Odkaz na článek
+        url: Odkaz na stránku
   helpers:
     back: Zpět
     show: Zobrazit
