@@ -48,7 +48,7 @@ cs:
         municipality_id: Obec
         party_id: Strana
         topic_ids: Témata
-        polititians: Osoby
+        polititians: Politici
         comment: Komentář
       image_asset:
         image: Fotka
