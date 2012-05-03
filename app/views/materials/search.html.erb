@@ -11,39 +11,39 @@
 <h3 class="type">Strany</h3>
 <ul class="list">
     <% @materials.collect(&:party).uniq.collect(&:title).each do |party_title| %>
-	<li><a href="#" class="label tag select"><%= party_title %></a></li>
-	<% end %>
+    <li><a href="#" class="label tag select"><%= party_title %></a></li>
+    <% end %>
 </ul>
 <br class="clear" />
 <p class="toright clear"><%= link_to "podrobnější vyhledávání", advanced_search_materials_path %></p>
 <br class="clear" />
 <hr />
-					
+
 <div id="promise-grid">
-	<ul>
-	    <% @materials.each do |mat| %>
-		<li>
-			<a href="<%= material_path(mat) %>">
-			    <%= render_asset_for_random_material(mat)%>
-			</a>
-			<div class="tags">
-				<p>
-					<span class="item">Strana:</span><br />
-					<%= mat.party.title %>
-				</p>
-				<p>
-					<span class="item">Lidé:</span><br />
-					<%= mat.polititians.collect(&:name).join(", ") %>
-				</p>
-				<p>
-					<span class="item">Témata:</span><br />
-					 <% mat.topics.each do |t| %>
- 					<%= t.title %>
- 					<% end %>
-				</p>
-			</div>
-			<div class="toright"><a href="<%= material_path(mat) %>" class="btn message">Detail</a></div>
-		</li>
-		<% end %>
-	</ul>
+    <ul>
+        <% @materials.each do |mat| %>
+        <li>
+            <a href="<%= material_path(mat) %>">
+                <%= render_asset_for_random_material(mat)%>
+            </a>
+            <div class="tags">
+                <p>
+                    <span class="item">Strana:</span><br />
+                    <%= mat.party.title %>
+                </p>
+                <p>
+                    <span class="item">Lidé:</span><br />
+                    <%= mat.polititians.collect(&:name).join(", ") %>
+                </p>
+                <p>
+                    <span class="item">Témata:</span><br />
+                     <% mat.topics.each do |t| %>
+                    <%= t.title %>
+                    <% end %>
+                </p>
+            </div>
+            <div class="toright"><a href="<%= material_path(mat) %>" class="btn message">Detail</a></div>
+        </li>
+        <% end %>
+    </ul>
 </div>
