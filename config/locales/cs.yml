@@ -74,7 +74,7 @@ cs:
     update: Upravit
   notice:
     material:
-      created: "Děkujeme za nahrání dokumentu."
+      created: "Děkujeme za nahrání dokumentu.<br><a href=\"/materials/new\">Chcete přidat další dokument?</a>"
       updated: "Zmeny u dokumentu byly uloženy."
     topic:
       created: "Téma bylo úspěšně přidáno"

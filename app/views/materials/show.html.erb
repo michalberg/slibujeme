@@ -1,7 +1,8 @@
 <% if flash[:notice] %>
-<div class="alert alert-success">
+<div class="alert alert-success" style="margin-top:16px;width:450px;">
   <a class="close" data-dismiss="alert">×</a>
-  <strong>Vše proběhlo v pořádku!</strong> <%= flash[:notice]%>
+  <strong>Vše proběhlo v pořádku!</strong>
+  <%= flash[:notice]%>
 </div>
 <% end %>
 
