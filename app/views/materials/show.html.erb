@@ -35,6 +35,10 @@
 <br class="clear" />
 <hr />
 <p class="center">
+    <h3>Komentář</h3>
+    <p class="material-comment">
+        <%= @material.comment %>
+    </p>
     <% @material.image_assets.each do |img| %>
     <div class="material_image_asset">
         <%= image_tag(img.image(:detail))%><br>
