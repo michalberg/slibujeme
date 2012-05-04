@@ -54,3 +54,21 @@ class VideoAsset < ActiveRecord::Base
     return true
   end
 end
+# == Schema Information
+# Schema version: 20120504093311
+#
+# Table name: video_assets
+#
+#  id                     :integer         not null, primary key
+#  user_code              :text
+#  video_id               :string(255)
+#  video_service          :string(255)
+#  material_id            :integer
+#  created_at             :datetime        not null
+#  updated_at             :datetime        not null
+#  thumbnail_file_name    :string(255)
+#  thumbnail_content_type :string(255)
+#  thumbnail_file_size    :integer
+#  thumbnail_updated_at   :datetime
+#
+

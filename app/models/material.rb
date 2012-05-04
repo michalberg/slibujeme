@@ -28,3 +28,20 @@ class Material < ActiveRecord::Base
     end
   end
 end
+# == Schema Information
+# Schema version: 20120504093311
+#
+# Table name: materials
+#
+#  id              :integer         not null, primary key
+#  election_id     :integer
+#  municipality_id :integer
+#  party_id        :integer
+#  topics          :text
+#  polititians     :text
+#  comment         :text
+#  created_at      :datetime        not null
+#  updated_at      :datetime        not null
+#  user_id         :integer
+#
+

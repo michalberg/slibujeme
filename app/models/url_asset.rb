@@ -10,3 +10,16 @@ class UrlAsset < ActiveRecord::Base
     return true
   end
 end
+# == Schema Information
+# Schema version: 20120504093311
+#
+# Table name: url_assets
+#
+#  id          :integer         not null, primary key
+#  url         :string(255)
+#  material_id :integer
+#  created_at  :datetime        not null
+#  updated_at  :datetime        not null
+#  url_content :text
+#
+
