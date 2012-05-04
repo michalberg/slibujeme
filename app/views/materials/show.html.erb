@@ -40,9 +40,14 @@
     <p class="material-comment">
         <%= @material.comment %>
     </p>
-    <% @material.image_assets.each do |img| %>
+    <% @material.image_assets.each do |file| %>
     <div class="material_image_asset">
-        <%= image_tag(img.image(:detail))%><br>
+        <% if file.is_image? %>
+            <%= image_tag(file.image(:detail))%><br>
+        <% else %>
+            <%=  %>
+            <iframe class="preview_iframe" id="short_preview" src="http://docs.google.com/gview?url=<%= "#{file.image_url(:original)}"%>&amp;embedded=true" style="width:600px; height:800px;" frameborder="0"></iframe>
+        <% end %>
     </div>
 	<% end %>
 	
