@@ -93,10 +93,12 @@
           <%= text_field_tag :material_polititians, params[:material_polititians], { "data-uri" => autocomplete_polititian_name_materials_path, "rel" => "tooltip", "title" => "Pro přidání další osoby stiskněte po zadání jména enter" } %>
       </p>
       
-      <p>
+      <div class="control-group">
           <%= f.label :comment %>
-          <%= f.text_area :comment %>
-      </p>
+          <div class="controls">
+              <%= f.text_area :comment, { "rel" => "tooltip", "title" => "Komentář bude veřejně zobrazen u dokumentu" } %>
+          </div>
+      </div>
       
       <% if !user_signed_in? %>
           <%= fields_for :user do |user_builder| -%>        

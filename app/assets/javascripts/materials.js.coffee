@@ -31,5 +31,9 @@ $(->
     .tooltip
       "placement": "right"
       "trigger": "focus"
+      
+  $("textarea#material_comment").tooltip
+    "placement": "right"
+    "trigger": "focus"
 
 )
