@@ -16,7 +16,7 @@
       <div class="control-group">
           <%= label_tag :p, "Strana" %>
           <div class="controls">
-              <%= select_tag :p, options_from_collection_for_select(Party.all, 'id', 'title', params[:p]), :include_blank => true %>
+              <%= select_tag :p, options_from_collection_for_select(Party.all, 'id', 'title_for_select', params[:p]), :include_blank => true %>
           </div>
       </div>
 
@@ -50,7 +50,7 @@
                 <div class="tags">
                     <p>
                         <span class="item">Strana:</span><br />
-                        <%= mat.party.title %>
+                        <%= mat.party %>
                     </p>
                     <p>
                         <span class="item">Lidé:</span><br />

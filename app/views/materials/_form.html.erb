@@ -73,7 +73,7 @@
       <div class="control-group<% if @material.errors.messages[:party] %> error<% end %>">
           <%= f.label :party_id %>
           <div class="controls">
-              <%= f.collection_select :party_id, Party.all, 'id', 'title', :include_blank => true %>
+              <%= f.collection_select :party_id, Party.all, 'id', 'title_for_select', :include_blank => true %>
               <% if @material.errors.messages[:party] %>
               <% @material.errors.messages[:party].each do |msg| %>
                 <span class="help-inline"><%= msg %></span><br>            
