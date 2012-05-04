@@ -118,3 +118,6 @@ cs:
       update: Upravit
     back: Zpět
     show: Zobrazit
+  title:
+    first_bit: Slibujeme.cz
+    separator: " > "
