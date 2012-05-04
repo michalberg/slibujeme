@@ -39,7 +39,8 @@ class MaterialsController < ApplicationController
   def create
     polititians = params[:material_polititians].split(",").map{|person| person.strip }.uniq
     @material = Material.new(params[:material])
-
+    @material.uploader_ip = request.remote_ip
+    
     respond_to do |format|
       if @material.valid? && @user.valid?
 
