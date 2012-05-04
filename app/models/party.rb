@@ -9,4 +9,10 @@ class Party < ActiveRecord::Base
     end
     self.title
   end
+  
+  def title_for_select
+    str = title
+    str += " (#{full_title})" unless full_title.nil?
+    str
+  end
 end
