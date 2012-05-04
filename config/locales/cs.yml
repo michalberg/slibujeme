@@ -48,7 +48,7 @@ cs:
         municipality_id: Obec
         party_id: Strana
         topic_ids: Témata
-        polititians: Osoby
+        polititians: Politici
         comment: Komentář
       image_asset:
         image: Fotka
@@ -66,7 +66,7 @@ cs:
       polititian:
         name: Jméno
       url_asset:
-        url: Odkaz na článek
+        url: Odkaz na stránku
   helpers:
     back: Zpět
     show: Zobrazit
@@ -74,7 +74,7 @@ cs:
     update: Upravit
   notice:
     material:
-      created: "Děkujeme za nahrání dokumentu."
+      created: "Děkujeme za nahrání dokumentu.<br><a href=\"/materials/new\">Chcete přidat další dokument?</a>"
       updated: "Zmeny u dokumentu byly uloženy."
     topic:
       created: "Téma bylo úspěšně přidáno"

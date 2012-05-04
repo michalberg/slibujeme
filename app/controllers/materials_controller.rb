@@ -55,7 +55,7 @@ class MaterialsController < ApplicationController
 
         # save material
         @material.save
-        format.html { redirect_to @material, :notice => t("notice.material.created") }
+        format.html { redirect_to @material, :notice => t("notice.material.created").html_safe }
       else
         2.times { @material.image_assets.build }
         @material.video_assets.build if @material.video_assets.empty?
