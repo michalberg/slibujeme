@@ -43,6 +43,7 @@ FactoryGirl.define do
       material.association(:polititian)
     ]}
     comment "Komentář k dokumentu"
+    uploader_ip "127.0.0.1"
   end
 
   factory :image_asset do
