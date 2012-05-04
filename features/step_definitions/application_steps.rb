@@ -22,7 +22,7 @@ end
 
 When /^I type "([^"]*)" in "([^"]*)" tag textarea$/ do |text, label|
   page.driver.browser.execute_script %Q{ 
-    var tagId = $("label:contains('#{label}')").siblings().find("input").first().attr("id") ;
+    var tagId = $("label:contains('#{label}')").siblings().find("input[id$='_tag']").attr("id") ;
     var evt = jQuery.Event("keypress"); 
     evt.which = 13; 
     $("input#" + tagId).trigger("focus").val("#{text}").trigger(evt);
