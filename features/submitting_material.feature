@@ -26,14 +26,14 @@ Feature: Submitting material
     
   @javascript
   Scenario: Submitting material with article url
-    When I fill in "Odkaz na článek" with "http://www.google.com"
+    When I fill in "Odkaz na stránku" with "http://www.google.com"
     When I select "krajské volby 2012" from "Volby"
     And I type in "Brn" into autocomplete list "municipality_name" and I choose "Brno (okr. Brno-město)"
     And I select "ODS" from "Strana"
     And I type in "Cykl" into javascript select box "Témata" and I choose "Cyklostezky"
     And I type in "Zam" into javascript select box "Témata" and I choose "Zaměstnanost"
-    And I type "Jiří Paroubek" in "Osoby" tag textarea 
-    And I type "Josef Dobeš" in "Osoby" tag textarea 
+    And I type "Jiří Paroubek" in "Politici" tag textarea 
+    And I type "Josef Dobeš" in "Politici" tag textarea 
     And I fill in "Komentář" with
     """
     Našel jsem to ve schránce
