@@ -20,6 +20,9 @@ class MaterialsController < ApplicationController
       @materials = Material.search(@search_params.merge(:m => 'and')).result(:distinct => true)
     end
   end
+  
+  # GET /materials
+  def index; end
 
   # GET /materials/:id
   def show

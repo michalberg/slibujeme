@@ -2,7 +2,7 @@ Slibujeme::Application.routes.draw do
   root :to => 'homepage#index'
   devise_for :users
 
-  resources :materials, :only => [:show, :new, :create] do
+  resources :materials, :only => [:index, :show, :new, :create] do
     get :search, :on => :collection
     get :advanced_search, :on => :collection
     get :autocomplete_municipality_title, :on => :collection
