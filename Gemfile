@@ -41,6 +41,7 @@ gem 'ancestry'
 gem 'paperclip', '~> 3.0'
 gem 'devise'
 gem 'ransack'
+gem 'annotate', '~> 2.4.1.beta'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

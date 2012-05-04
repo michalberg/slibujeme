@@ -9,3 +9,23 @@ class Municipality < ActiveRecord::Base
     self.title
   end
 end
+# == Schema Information
+# Schema version: 20120504093311
+#
+# Table name: municipalities
+#
+#  id             :integer         not null, primary key
+#  title          :string(255)
+#  created_at     :datetime        not null
+#  updated_at     :datetime        not null
+#  ancestry       :string(255)
+#  code           :string(255)
+#  gps_lat        :float
+#  gps_lng        :float
+#  ancestry_depth :integer         default(0)
+#
+# Indexes
+#
+#  index_municipalities_on_ancestry  (ancestry)
+#
+
