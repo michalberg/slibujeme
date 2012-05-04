@@ -7,10 +7,17 @@
 <% end %>
 
 <% @subpage = true %>
-<p><a href="javascript: history.go(-1)">Zpět na vyhledávání</a></p>
-	<p class="toright"><a href="#">nahlásit závadný obsah</a> | <a href="#">upravit dokument</a></p>
-	<br class="clear" />
-	<p class="toright"><%= image_tag "social.png", :title => "Sociální sítě" %></p>
+<p>
+    <a href="javascript: history.go(-1)">Zpět na vyhledávání</a>
+</p>
+<p class="toright">
+    <a href="#">nahlásit závadný obsah</a> | <a href="#">upravit dokument</a>
+</p>
+<br class="clear" />
+<h1 style="float:left;"><%= [@material.election.title, @material.municipality.full_title, @material.party.to_s].collect(&:capitalize).join(" > ")%></h1>
+<p class="toright"><%= image_tag "social.png", :title => "Sociální sítě" %></p>
+<br class="clear" />
+
 <ul class="list">
 	<li><a href="#" class="label tag select"><%= @material.election.title %></a></li>
 	<li><a href="#" class="label tag select"><%= @material.municipality.full_title %></a></li>
