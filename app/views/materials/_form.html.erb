@@ -14,7 +14,7 @@
         <p>
             <a href="#" id="materials-add-more-image-assets">Chci přidat více fotek</a>
         </p>
-        <span class="help">Pokud chcete přidat více stran jednoho letáku, přidejte je najednou pomocí výběru více souborů</span>
+        <span class="badge badge-info" style="margin-right:10px;">Tip</span><span class="help">Pokud chcete přidat více stran jednoho letáku, přidejte je najednou pomocí výběru více souborů</span>
     </div>
 	<div id="tabs-3">
         <%= f.fields_for :url_assets do |builder| %>	
@@ -109,7 +109,7 @@
           <div class="control-group<% if @user.errors.messages[:email] %> error<% end %>">
               <%= user_builder.label :email, "Kontakt" %>
               <div class="controls">
-                <%= user_builder.text_field :email %>
+                <%= user_builder.text_field :email, { "rel" => "tooltip", "title" => "Bude vám vytvořeno nový účet svázaný s tímto e-mailem. Nikdy nikde nebude zveřejněna informace o tom, kdo tento dokument přidal." } %>
                 <% @user.errors.messages[:email].each do |msg| %>
                 <span class="help-inline"><%= msg %></span><br>            
                 <% end %>
