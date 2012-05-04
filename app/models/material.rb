@@ -16,6 +16,7 @@ class Material < ActiveRecord::Base
   validates :municipality, :presence => true
   validates :election, :presence => true
   validates :party, :presence => true
+  validates :uploader_ip, :presence => true
   
   validate :has_at_least_one_asset_attached, :on => :create
   
