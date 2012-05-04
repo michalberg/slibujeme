@@ -109,7 +109,7 @@
           <div class="control-group<% if @user.errors.messages[:email] %> error<% end %>">
               <%= user_builder.label :email, "Kontakt" %>
               <div class="controls">
-                <%= user_builder.text_field :email %>
+                <%= user_builder.text_field :email, { "rel" => "tooltip", "title" => "Bude vám vytvořeno nový účet svázaný s tímto e-mailem. Nikdy nikde nebude zveřejněna informace o tom, kdo tento dokument přidal." } %>
                 <% @user.errors.messages[:email].each do |msg| %>
                 <span class="help-inline"><%= msg %></span><br>            
                 <% end %>

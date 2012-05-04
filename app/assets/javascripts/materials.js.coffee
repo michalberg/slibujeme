@@ -36,4 +36,7 @@ $(->
     "placement": "right"
     "trigger": "focus"
 
+  $("input#user_email").tooltip
+    "placement": "right"
+    "trigger": "focus"
 )
