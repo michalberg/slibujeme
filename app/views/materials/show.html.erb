@@ -6,7 +6,6 @@
 </div>
 <% end %>
 
-<% @subpage = true %>
 <p>
     <a href="javascript: history.go(-1)">Zpět na vyhledávání</a>
 </p>
@@ -84,3 +83,9 @@
 <br class="clear" />
 <p><a href="javascript: history.go(-1)">Zpět na vyhledávání</a></p>
 <br class="clear" />
+
+<% @subpage = true %>
+<% title(@material.election.title, @material.party.to_s, @material.municipality.full_title) %>
+<% content_for :description do %>
+Zkontrolujte si volební sliby pro <%= @material.election.title.capitalize %>: Strana <%= @material.party.to_s %>, <%= @material.municipality.full_title %>
+<% end %>

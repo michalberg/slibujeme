@@ -1,7 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="<%= I18n.locale %>" xml:lang="<%= I18n.locale %>">
 <head>
-  <title>Slibujeme</title>
+  <title>
+    <% if content_for?(:title) %>
+        <%= yield(:title) %>
+      <% else %>
+         <%= t("title.first_bit") %>
+      <% end %>
+  </title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -12,8 +18,7 @@
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="-1" />
   <meta name="googlebot" content="index,follow,snippet,archive" />
-  <meta name="description" content="Slibujeme nesplnitelné" />
-  <meta name="keywords" content="sliby, volby, cssd, kscm" />
+  <meta name="description" content="<%= content_for?(:description) ? yield(:description).strip : "Slibujeme nesplnitelné"%>" />
  </head>
 <body>
     <div id="container">
