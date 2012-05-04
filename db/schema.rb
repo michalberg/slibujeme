@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120423074142) do
+ActiveRecord::Schema.define(:version => 20120504093311) do
 
   create_table "elections", :force => true do |t|
     t.string   "title"
@@ -70,9 +70,10 @@ ActiveRecord::Schema.define(:version => 20120423074142) do
 
   create_table "parties", :force => true do |t|
     t.string   "title"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
     t.string   "full_title"
+    t.string   "displayed_value", :default => "title"
   end
 
   create_table "polititians", :force => true do |t|
