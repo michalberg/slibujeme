@@ -24,4 +24,12 @@ $(->
     evt.preventDefault()
     html = $.trim($(@).parent().siblings("p").first().html()).replace(/0/g, $(@).parent().siblings("p").length)
     $(@).parent().before("<p>#{html}</p>")
+    
+  $("input#material_polititians_tag")
+    .attr("rel", "tooltip")
+    .attr("title", "Pro přidání další osoby stiskněte po zadání jména enter")
+    .tooltip
+      "placement": "right"
+      "trigger": "focus"
+
 )

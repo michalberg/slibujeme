@@ -89,7 +89,7 @@
       
       <p>
           <%= f.label :polititians %>
-          <%= text_field_tag :material_polititians, params[:material_polititians], { "data-uri" => autocomplete_polititian_name_materials_path } %>
+          <%= text_field_tag :material_polititians, params[:material_polititians], { "data-uri" => autocomplete_polititian_name_materials_path, "rel" => "tooltip", "title" => "Pro přidání další osoby stiskněte po zadání jména enter" } %>
       </p>
       
       <p>
