@@ -14,6 +14,7 @@
         <p>
             <a href="#" id="materials-add-more-image-assets">Chci přidat více fotek</a>
         </p>
+        <span class="help">Pokud chcete přidat více stran jednoho letáku, přidejte je najednou pomocí výběru více souborů</span>
     </div>
 	<div id="tabs-3">
         <%= f.fields_for :url_assets do |builder| %>	
@@ -82,20 +83,26 @@
           </div>
       </div>
       
-      <p>
+      <div class="control-group">
           <%= f.label :topic_ids %>
-          <%= f.grouped_collection_select :topic_ids, Topic.roots, :children, :title, :id, :title, {:include_blank => true}, {:multiple => true, "data-placeholder" => "Vyberte témata..."} %>
-      </p>
+          <div class="controls">
+              <%= f.grouped_collection_select :topic_ids, Topic.roots, :children, :title, :id, :title, {:include_blank => true}, {:multiple => true, "data-placeholder" => "Vyberte témata..."} %>
+          </div>
+      </div>
       
-      <p>
+      <div class="control-group">
           <%= f.label :polititians %>
-          <%= text_field_tag :material_polititians, params[:material_polititians], { "data-uri" => autocomplete_polititian_name_materials_path } %>
-      </p>
+          <div class="controls">
+              <%= text_field_tag :material_polititians, params[:material_polititians], { "data-uri" => autocomplete_polititian_name_materials_path, "rel" => "tooltip", "title" => "Pro přidání další osoby stiskněte po zadání jména enter" } %>
+          </div>
+      </div>
       
-      <p>
+      <div class="control-group">
           <%= f.label :comment %>
-          <%= f.text_area :comment %>
-      </p>
+          <div class="controls">
+              <%= f.text_area :comment, { "rel" => "tooltip", "title" => "Komentář bude veřejně zobrazen u dokumentu" } %>
+          </div>
+      </div>
       
       <% if !user_signed_in? %>
           <%= fields_for :user do |user_builder| -%>        
