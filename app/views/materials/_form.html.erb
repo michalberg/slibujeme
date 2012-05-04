@@ -83,15 +83,19 @@
           </div>
       </div>
       
-      <p>
+      <div class="control-group">
           <%= f.label :topic_ids %>
-          <%= f.grouped_collection_select :topic_ids, Topic.roots, :children, :title, :id, :title, {:include_blank => true}, {:multiple => true, "data-placeholder" => "Vyberte témata..."} %>
-      </p>
+          <div class="controls">
+              <%= f.grouped_collection_select :topic_ids, Topic.roots, :children, :title, :id, :title, {:include_blank => true}, {:multiple => true, "data-placeholder" => "Vyberte témata..."} %>
+          </div>
+      </div>
       
-      <p>
+      <div class="control-group">
           <%= f.label :polititians %>
-          <%= text_field_tag :material_polititians, params[:material_polititians], { "data-uri" => autocomplete_polititian_name_materials_path, "rel" => "tooltip", "title" => "Pro přidání další osoby stiskněte po zadání jména enter" } %>
-      </p>
+          <div class="controls">
+              <%= text_field_tag :material_polititians, params[:material_polititians], { "data-uri" => autocomplete_polititian_name_materials_path, "rel" => "tooltip", "title" => "Pro přidání další osoby stiskněte po zadání jména enter" } %>
+          </div>
+      </div>
       
       <div class="control-group">
           <%= f.label :comment %>
