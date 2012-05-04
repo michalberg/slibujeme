@@ -8,17 +8,20 @@
     <li><a href="#" class="label tag">PS Parlamentu ČR 2010</a></li>
     <li><a href="#" class="label tag">Zastupitelstva obcí 2010</a></li>
 </ul> -->
+<% if @materials.any? %>
 <h3 class="type">Strany</h3>
 <ul class="list">
     <% @materials.collect(&:party).uniq.collect(&:title).each do |party_title| %>
     <li><a href="#" class="label tag select"><%= party_title %></a></li>
     <% end %>
 </ul>
+<% end %>
 <br class="clear" />
 <p class="toright clear"><%= link_to "podrobnější vyhledávání", advanced_search_materials_path %></p>
 <br class="clear" />
 <hr />
 
+<% if @materials.any? %>
 <div id="promise-grid">
     <ul>
         <% @materials.each do |mat| %>
@@ -47,3 +50,14 @@
         <% end %>
     </ul>
 </div>
+<% else %>
+Bohužel pro váš dotaz neexistují žádné materiály.<br>
+Zde je výpis posledních 10 přidaných materiálů:
+<div id="promise-grid">
+
+
+    <ul>
+        <%= render_last_added_materials %>
+    </ul>
+</div>
+<% end %>
