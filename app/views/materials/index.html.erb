@@ -1,0 +1,12 @@
+<% @social = false %>
+<% @subpage = true %>
+<h2>Naposledy přidané dokumenty</h2>
+
+<p class="toright clear"><%= link_to "vyhledávání", advanced_search_materials_path %></p>
+<br class="clear" />
+
+<div id="promise-grid">
+    <ul>
+        <%= render_last_added_materials %>
+    </ul>
+</div>

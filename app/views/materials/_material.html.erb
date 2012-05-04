@@ -1,0 +1,22 @@
+<li>
+    <a href="<%= material_path(material) %>">
+        <%= render_asset_for_random_material(material)%>
+    </a>
+    <div class="tags">
+        <p>
+            <span class="item">Strana:</span><br />
+            <%= material.party %>
+        </p>
+        <p>
+            <span class="item">Lidé:</span><br />
+            <%= material.polititians.collect(&:name).join(", ") %>
+        </p>
+        <p>
+            <span class="item">Témata:</span><br />
+             <% material.topics.each do |t| %>
+            <%= t.title %>
+            <% end %>
+        </p>
+    </div>
+    <div class="toright"><a href="<%= material_path(material) %>" class="btn message">Detail</a></div>
+</li>
