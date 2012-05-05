@@ -18,15 +18,15 @@
 <br class="clear" />
 
 <ul class="list">
-	<li><a href="#" class="label tag select"><%= @material.election.title %></a></li>
-	<li><a href="#" class="label tag select"><%= @material.municipality.full_title %></a></li>
-	<li><a href="#" class="label tag select"><%= @material.party %></a></li>
+	<li><a href="<%= advanced_search_materials_path(:e => @material.election.id)%>" class="label tag select"><%= @material.election.title %></a></li>
+	<li><a href="<%= advanced_search_materials_path(:m => @material.municipality.full_title)%>" class="label tag select"><%= @material.municipality.full_title %></a></li>
+	<li><a href="<%= advanced_search_materials_path(:p => @material.party)%>" class="label tag select"><%= @material.party %></a></li>
 </ul>
 <% if @material.topics.any? %>
 <h3 class="type">Témata</h3>
 <ul class="list">
     <% @material.topics.each do |topic| %>
-	<li><a href="#" class="label tag select"><%= topic.title %></a></li>
+	<li><a href="<%= advanced_search_materials_path(:t => [topic.id])%>" class="label tag select"><%= topic.title %></a></li>
     <% end %>
 </ul>
 <% end %>
@@ -35,7 +35,7 @@
 <h3 class="type">Osoby</h3>
 <ul class="list">
     <% @material.polititians.each do |person| %>
-	<li><a href="#" class="label tag select"><%= person.name %></a></li>
+	<li><a href="<%= advanced_search_materials_path(:po => person.name)%>" class="label tag select"><%= person.name %></a></li>
 	<% end %>
 </ul>
 <% end %>
