@@ -57,8 +57,14 @@ class MaterialsController < ApplicationController
         sign_in(:user, @user)
         @material.user = @user
 
+        # notify user about creating his account
+        # puts "==========new record============: #{@user.persisted?.inspect}"
+        # puts "==========@user.password============: #{@user.password.inspect}"
+        MaterialNotifier.materials_user_created(@material, @user).deliver unless @user.password.nil?
+
         # save material
-        @material.save
+        @material.save        
+        
         format.html { redirect_to @material, :notice => t("notice.material.created").html_safe }
       else
         2.times { @material.image_assets.build }
@@ -72,6 +78,7 @@ class MaterialsController < ApplicationController
     end
   end
   
+  # PUT /materials/:id/flag
   def flag
     @material = Material.find params[:material_id]
     
