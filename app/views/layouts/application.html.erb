@@ -22,97 +22,108 @@
  </head>
 <body>
     <div id="container">
-		<div id="layout" >
-			<div id="layout-top">
-				<div id="top-logo">
-					<a href="<%= root_path %>" title="Slibujeme.cz - hlavní stránka"><%= image_tag "logo.png", :title => "Slibujeme.cz" %></a>
-				</div>
-				<form id="top-login">
-					<div>
-						<p>
-							<label>už.jméno</label>
-							<input type="text" name="uz_jmeno" />
-						</p>
-						<p>
-							<label>heslo</label>
-							<input type="password" name="heslo" />
-						</p>
-					</div>
-					<input type="submit" value="Přihlásit" class="btn violet" />
-					<p class="smaller clear hovers"><a href="#">nová registrace</a> | <a href="#">zapomenuté heslo</a></p>
-				</form>
-			</div>
-			<div id="layout-content"<%= ' class="subpage"'.html_safe if @subpage %>>
+        <div id="layout" >
+            <div id="layout-top">
+                <div id="top-logo">
+                    <a href="<%= root_path %>" title="Slibujeme.cz - hlavní stránka"><%= image_tag "logo.png", :title => "Slibujeme.cz" %></a>
+                </div>
+                <% if !user_signed_in? %>
+                <%= form_for("user", { :url => user_session_path, :html => { :id => "top-login" } }) do |f| %>
+                  <div>
+                    <p>
+                        <%= f.label :email, "už. jméno", :for => "email" %>
+                        <%= f.text_field :email, :id => "email" %>
+                    </p>
+                    <p>
+                        <%= f.label :password, "heslo" %>
+                        <%= f.password_field :password %>
+                    </p>
+                    <!--
+                    <%= f.check_box :remember_me %>
+                    <%= f.label :remember_me %>
+                    -->
+                  </div>
+                    <%= f.submit 'Přihlásit', :class => "btn violet" %>
+                    <p class="smaller clear hovers"><!-- <a href="#">nová registrace</a> | --><%= link_to "zapomenuté heslo", new_password_path('user') %></p>
+
+                <% end %>
+                <% else %>
+                <p>Přihlášen jako <strong><%= current_user.email %></strong>. <%= link_to "Odhlásit", destroy_user_session_path, :method => :delete %>
+                <% end %>
+                    
+
+            </div>
+            <div id="layout-content"<%= ' class="subpage"'.html_safe if @subpage %>>
             
             <%= yield %>
             
             </div>
             <% if @social %>
-			<div id="layout-social">
-				<div id="facebook">
-					<div>
-						<fb:like-box href="www.facebook.com/pages/Slibujemecz/330115993714027" width="560" height="400" show_faces="true" border_color="" stream="false" header="false">
-						</fb:like-box>
-					</div>
-				</div>
-				<div id="twitter">
-					<script src="http://widgets.twimg.com/j/2/widget.js" type="text/javascript"></script>
-					<script type="text/javascript">
-						new TWTR.Widget({
-							version: 2,
-							type: 'profile',
-							rpp: 3,
-							interval: 6000,
-							width: 270,
-							height: 300,
-							theme: {
-								shell: {
-									color: '#000'
-								},
-								tweets: {
-									color: '#000',
-									links: '#000'
-								}
-							},
-							features: {
-								scrollbar: false,
-								loop: false,
-								live: false,
-								hashtags: false,
-								timestamp: true,
-								avatars: false,
-								behavior: 'all'
-							}
-							}).render().setUser('slibujeme').start();
-					</script>
-				</div>					
-			</div>
-			<% end %>
-			<div id="layout-bottom">
-				<ul>
-					<li><%= link_to "Naposledy přidané", materials_path, :title => "Posledních 10 přidaných materiálů" %>
-  				<li><%= link_to "Nahrát dokument", new_material_path, :title => "Nahrát dokument" %>
-					<li><a href="#" title="O projektu">O projektu</a></li>
-					<li><a href="#" title="Tiskové zprávy">Tiskové zprávy</a></li>
-					<li><a href="#" title="kontakty">Kontakty</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
+            <div id="layout-social">
+                <div id="facebook">
+                    <div>
+                        <fb:like-box href="www.facebook.com/pages/Slibujemecz/330115993714027" width="560" height="400" show_faces="true" border_color="" stream="false" header="false">
+                        </fb:like-box>
+                    </div>
+                </div>
+                <div id="twitter">
+                    <script src="http://widgets.twimg.com/j/2/widget.js" type="text/javascript"></script>
+                    <script type="text/javascript">
+                        new TWTR.Widget({
+                            version: 2,
+                            type: 'profile',
+                            rpp: 3,
+                            interval: 6000,
+                            width: 270,
+                            height: 300,
+                            theme: {
+                                shell: {
+                                    color: '#000'
+                                },
+                                tweets: {
+                                    color: '#000',
+                                    links: '#000'
+                                }
+                            },
+                            features: {
+                                scrollbar: false,
+                                loop: false,
+                                live: false,
+                                hashtags: false,
+                                timestamp: true,
+                                avatars: false,
+                                behavior: 'all'
+                            }
+                            }).render().setUser('slibujeme').start();
+                    </script>
+                </div>                  
+            </div>
+            <% end %>
+            <div id="layout-bottom">
+                <ul>
+                    <li><%= link_to "Naposledy přidané", materials_path, :title => "Posledních 10 přidaných materiálů" %>
+                <li><%= link_to "Nahrát dokument", new_material_path, :title => "Nahrát dokument" %>
+                    <li><a href="#" title="O projektu">O projektu</a></li>
+                    <li><a href="#" title="Tiskové zprávy">Tiskové zprávy</a></li>
+                    <li><a href="#" title="kontakty">Kontakty</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
             
     <% if @social %>
-	<div id="fb-root"></div>
-	<script src="http://connect.facebook.net/en_GB/all.js#xfbml=1" type="text/javascript"></script>
-	<script type="text/javascript">
-	  window.fbAsyncInit = function() {
-	    FB.init({ appId: '330115993714027', status: true, cookie: true, xfbml: true });
-	  };
-	  (function() {
-	    var e = document.createElement('script'); e.async = true;
-	    e.src = document.location.protocol + '//connect.facebook.net/en_GB/all.js';
-	    document.getElementById('fb-root').appendChild(e);
-	  }());
-	</script>
-	<% end %>
+    <div id="fb-root"></div>
+    <script src="http://connect.facebook.net/en_GB/all.js#xfbml=1" type="text/javascript"></script>
+    <script type="text/javascript">
+      window.fbAsyncInit = function() {
+        FB.init({ appId: '330115993714027', status: true, cookie: true, xfbml: true });
+      };
+      (function() {
+        var e = document.createElement('script'); e.async = true;
+        e.src = document.location.protocol + '//connect.facebook.net/en_GB/all.js';
+        document.getElementById('fb-root').appendChild(e);
+      }());
+    </script>
+    <% end %>
 </body>
 </html>
