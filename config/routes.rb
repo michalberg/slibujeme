@@ -7,6 +7,7 @@ Slibujeme::Application.routes.draw do
     get :advanced_search, :on => :collection
     get :autocomplete_municipality_title, :on => :collection
     get :autocomplete_polititian_name, :on => :collection
+    put :flag, :on => :member
   end
   
   namespace :admin do
