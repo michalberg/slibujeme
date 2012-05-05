@@ -23,7 +23,7 @@
       <div class="control-group">
           <%= label_tag :t, "Témata" %>
           <div class="controls">
-              <%= select_tag :t, option_groups_from_collection_for_select(Topic.roots, :children, :title, :id, :title), {:include_blank => true, :multiple => true, "data-placeholder" => "Vyberte témata..."} %>
+              <%= select_tag :t, option_groups_from_collection_for_select(Topic.roots, :children, :title, :id, :title, params[:t]), {:include_blank => true, :multiple => true, "data-placeholder" => "Vyberte témata..."} %>
           </div>
       </div>
 
