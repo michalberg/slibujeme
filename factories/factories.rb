@@ -3,6 +3,8 @@
 FactoryGirl.define do
   factory :election do
     sequence(:title, 2010) { |n| "Volby #{n}"}
+    from Date.today.to_s
+    to (Date.today + 2.days).to_s
   end
   
   party_no = sequence(:party_no).next

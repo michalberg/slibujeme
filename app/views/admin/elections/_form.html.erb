@@ -1,0 +1,42 @@
+<%= form_for [:admin, @election] do |f| -%>
+  <div class="control-group<% if @election.errors.messages[:title] %> error<% end %>">
+      <%= f.label :title %>
+      <div class="controls">
+          <%= f.text_field :title %>
+          <% if @election.errors.messages[:title] %>
+            <% @election.errors.messages[:title].each do |msg| %>
+            <span class="help-inline"><%= msg %></span><br>            
+            <% end %>
+          <% end %>
+      </div>
+  </div>
+  
+  <div class="date-control-group control-group<% if @election.errors.messages[:from] %> error<% end %>">
+      <%= f.label :from %>
+      <div class="controls">
+          <%= f.date_select :from %>
+          <% if @election.errors.messages[:from] %>
+            <% @election.errors.messages[:from].each do |msg| %>
+            <span class="help-inline"><%= msg %></span><br>            
+            <% end %>
+          <% end %>
+      </div>
+  </div>
+  
+  <div class="date-control-group control-group<% if @election.errors.messages[:to] %> error<% end %>">
+      <%= f.label :to %>
+      <div class="controls">
+          <%= f.date_select :to %>
+          <% if @election.errors.messages[:to] %>
+            <% @election.errors.messages[:to].each do |msg| %>
+            <span class="help-inline"><%= msg %></span><br>            
+            <% end %>
+          <% end %>
+      </div>
+  </div>
+    
+  <div class="form-actions">
+      <%= f.submit :class => "btn btn-primary" %>
+      <%= link_to '<i class="icon-arrow-left"></i> Zpět'.html_safe , admin_elections_path, :class => "btn" %>
+  </div>
+<% end -%>

@@ -17,6 +17,9 @@
             <li<%= (params[:controller] == "admin/materials") ? raw(' class="active"'):'' %>>
                 <%= link_to "Dokumenty", admin_materials_path %>
             </li> 
+            <li<%= (params[:controller] == "admin/elections") ? raw(' class="active"'):'' %>>
+                <%= link_to "Volby", admin_elections_path %>
+            </li> 
             <li<%= (params[:controller] == "admin/topics") ? raw(' class="active"'):'' %>>
                 <%= link_to "Témata", admin_topics_path %>
             </li> 
