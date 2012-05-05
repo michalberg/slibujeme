@@ -39,4 +39,14 @@ $(->
   $("input#user_email").tooltip
     "placement": "right"
     "trigger": "focus"
+    
+  $("a#new-party").on "click", (evt) ->
+    evt.preventDefault()
+    $(@).siblings("span").show()
+    $(@).hide()
+    
+  if $("input#material_party_name").val() != ""
+    $("a#new-party").siblings("span").show()
+    $("a#new-party").hide()
+    
 )
