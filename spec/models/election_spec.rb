@@ -14,4 +14,15 @@ describe Election do
       election.valid?.should be_false
     end
   end
+  
+  describe "scopes" do
+    it "running" do
+      create(:election, :from => Date.today - 20.days, :to => Date.today - 15.days)
+      running = create(:election, :from => Date.today - 3.days, :to => Date.today + 3.days)
+      
+      Election.all.count.should eql(2)
+      Election.running.first.should eql(running)
+      Election.running.count.should eql(1)
+    end
+  end
 end

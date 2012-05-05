@@ -5,8 +5,8 @@ Feature: Submitting material
 
   Background:
     Given there are the following elections:
-      | title              |
-      | krajské volby 2012 |
+      | title              | from       | to         |
+      | krajské volby 2012 | 2011-01-01 | 2021-01-01 |
     And there are the following municipalities:
       | id | title             | parent_id |
       | 1  | Jihomoravský kraj |           |

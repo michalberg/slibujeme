@@ -8,6 +8,10 @@ class Election < ActiveRecord::Base
               :after => :from, 
               :message => I18n.t('activerecord.errors.models.election.attributes.to.before_from')
             }
+            
+  scope :running, lambda {
+    where("[from] <= ? and [to] >= ?", Date.today, Date.today)
+  }
 end
 # == Schema Information
 # Schema version: 20120505093603
