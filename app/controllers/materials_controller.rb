@@ -71,6 +71,21 @@ class MaterialsController < ApplicationController
       end
     end
   end
+  
+  def flag
+    @material = Material.find params[:material_id]
+    
+    if !params[:flag_text].blank?
+      email = (params[:flag_email].blank?) ? "" : params[:flag_email]
+      note = params[:flag_text]
+      MaterialNotifier.flag_material(@material, email, note).deliver
+      flash[:notice] = t("notice.material.flagged")
+    end
+    
+    respond_to do |format|
+      format.html { redirect_to @material }
+    end
+  end
 
   private
 

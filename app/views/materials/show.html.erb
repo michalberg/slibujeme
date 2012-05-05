@@ -10,7 +10,7 @@
     <a href="javascript: history.go(-1)">Zpět na vyhledávání</a>
 </p>
 <p class="toright">
-    <a href="#">nahlásit závadný obsah</a> | <a href="#">upravit dokument</a>
+    <a data-toggle="modal" href="#flag-material">nahlásit závadný obsah</a> | <a href="#">upravit dokument</a>
 </p>
 <br class="clear" />
 <h1 style="float:left;"><%= [@material.election.title, @material.municipality.full_title, @material.party.to_s].collect(&:capitalize).join(" > ")%></h1>
@@ -83,6 +83,36 @@
 <br class="clear" />
 <p><a href="javascript: history.go(-1)">Zpět na vyhledávání</a></p>
 <br class="clear" />
+
+<div class="modal fade" id="flag-material">
+  <div class="modal-header">
+    <button class="close" data-dismiss="modal">×</button>
+    <h3>Nahlásit závadný obsah</h3>
+  </div>
+  <div class="modal-body">
+    <%= form_tag(flag_material_path(@material), :method => :put) do %>
+      <div class="control-group">
+        <%= label_tag :flag_email, "E-mail" %>
+        <div class="controls">
+            <%= text_field_tag :flag_email %>
+            <span class="help-inline">Nepovinné</span>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= label_tag :flag_text, "Popis problému" %>
+        <div class="controls">
+          <%= text_area_tag :flag_text %>
+        </div>
+      </div>
+      <%= hidden_field_tag :material_id, @material.id %>
+
+  </div>
+  <div class="modal-footer">
+    <%= submit_tag "Odeslat", :class => "btn btn-primary violet" %>
+    <% end -%>
+    <a href="#" class="btn" data-dismiss="modal">Neodesílat</a>
+  </div>
+</div>
 
 <% @subpage = true %>
 <% title(@material.election.title, @material.party.to_s, @material.municipality.full_title) %>

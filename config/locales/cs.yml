@@ -86,6 +86,7 @@ cs:
     material:
       created: "Děkujeme za nahrání dokumentu.<br><a href=\"/materials/new\">Chcete přidat další dokument?</a>"
       updated: "Zmeny u dokumentu byly uloženy."
+      flagged: "Děkujeme za pomoc, nahlášenému problému se budeme věnovat."
     topic:
       created: "Téma bylo úspěšně přidáno"
       updated: "Změny tématu byly uloženy."
@@ -137,6 +138,9 @@ cs:
   title:
     first_bit: Slibujeme.cz
     separator: " > "
+  mail:
+    flag:
+      subject: "[Slibujeme] někdo označil dokument jako závadný"
   date:
     abbr_day_names:
     - Ne

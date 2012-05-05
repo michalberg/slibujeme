@@ -1,0 +1,17 @@
+Někdo <%= (!@email.blank?) ? "(uvedl e-mail #{@email}) ": ""%>na webu označil materiál ID: (<%= @material.id %>) jako závadný.
+
+Jako důvod uvedl:
+
+<%= @note %>
+
+Můžete se podívat na materiál tak, jak je vidí návštěvníci:
+
+<%= material_url(@material) %>
+
+nebo rovnou přejít na editaci materiálu v administraci:
+
+<%= edit_admin_material_url(@material) %>
+
+Na tento e-mail neodpovídejte.
+
+Slibujeme.cz Aplikace
