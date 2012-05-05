@@ -41,7 +41,7 @@ class Material < ActiveRecord::Base
   end
 end
 # == Schema Information
-# Schema version: 20120504093311
+# Schema version: 20120505093603
 #
 # Table name: materials
 #
@@ -55,5 +55,6 @@ end
 #  created_at      :datetime        not null
 #  updated_at      :datetime        not null
 #  user_id         :integer
+#  uploader_ip     :string(255)
 #
 

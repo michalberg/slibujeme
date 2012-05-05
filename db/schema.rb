@@ -11,12 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120504122407) do
+ActiveRecord::Schema.define(:version => 20120505093603) do
 
   create_table "elections", :force => true do |t|
     t.string   "title"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.date     "from"
+    t.date     "to"
   end
 
   create_table "image_assets", :force => true do |t|

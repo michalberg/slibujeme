@@ -15,6 +15,7 @@ Slibujeme::Application.routes.draw do
     resources :municipalities, :except => [:show]
     resources :polititians, :only => [:index, :edit, :update]
     resources :materials, :only => [:index, :edit, :update]
+    resources :elections, :except => [:show]
   end
   
   namespace :api do
