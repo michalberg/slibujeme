@@ -15,10 +15,14 @@ class Material < ActiveRecord::Base
   
   validates :municipality, :presence => true
   validates :election, :presence => true
-  validates :party, :presence => true
+  validates :party, :presence => true, :if => "self.party_name.nil?"
   validates :uploader_ip, :presence => true
   
   validate :has_at_least_one_asset_attached, :on => :create
+  
+  after_save :create_new_party
+  
+  attr_accessor :party_name
   
   def has_at_least_one_asset_attached
     if 
@@ -26,6 +30,13 @@ class Material < ActiveRecord::Base
       self.video_assets.reject(&:marked_for_destruction?).empty? and
       self.url_assets.reject(&:marked_for_destruction?).empty?
       errors.add(:base, I18n.t("activerecord.errors.models.material.at_least_one_asset"))
+    end
+  end
+  
+  def create_new_party
+    unless @party_name.blank?
+      p = Party.find_or_create_by_title(@party_name)
+      self.update_column(:party_id, p.id) 
     end
   end
 end

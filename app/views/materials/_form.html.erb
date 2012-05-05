@@ -80,6 +80,8 @@
                 <span class="help-inline"><%= msg %></span><br>            
               <% end %>
               <% end %>
+              <a id="new-party">Není strana v seznamu?</a>
+              <span style="display:none;"><%= f.text_field :party_name, { "placeholder" => "Jaká?" } %></span>
           </div>
       </div>
       
