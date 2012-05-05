@@ -31,8 +31,8 @@
                 <%= form_for("user", { :url => user_session_path, :html => { :id => "top-login" } }) do |f| %>
                   <div>
                     <p>
-                        <%= f.label :email, "už. jméno" %>
-                        <%= f.text_field :email %>
+                        <%= f.label :email, "už. jméno", :for => "email" %>
+                        <%= f.text_field :email, :id => "email" %>
                     </p>
                     <p>
                         <%= f.label :password, "heslo" %>
