@@ -1,2 +1,15 @@
-<h1>Materials#edit</h1>
-<p>Find me in app/views/materials/edit.html.erb</p>
+<h2>Editace materiálu</h2>
+
+<div id="posp_add" style="padding:20px;">
+<% if flash[:alert] %>
+    <div class="alert alert-error">
+      <a class="close" data-dismiss="alert">×</a>
+      <strong>Pozor!</strong> <%= flash[:alert]%>
+    </div>
+<% end %>
+<% debug @material.errors.messages %>
+<%= render "edit_form" %>
+
+</div>
+<% @social = false %>
+<% @subpage = true %>
