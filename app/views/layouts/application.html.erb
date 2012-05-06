@@ -49,6 +49,7 @@
                 <% end %>
                 <% else %>
                 <p>Přihlášen jako <strong><%= current_user.email %></strong>. <%= link_to "Odhlásit", destroy_user_session_path, :method => :delete %>
+                <br><%= link_to "moje dokumenty", users_materials_path %>
                 <% end %>
                     
 

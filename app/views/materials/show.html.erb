@@ -6,11 +6,21 @@
 </div>
 <% end %>
 
+<% if flash[:alert] %>
+<div class="alert" style="margin-top:16px;width:450px;">
+  <a class="close" data-dismiss="alert">×</a>
+  <%= flash[:alert]%>
+</div>
+<% end %>
+
 <p>
     <a href="javascript: history.go(-1)">Zpět na vyhledávání</a>
 </p>
 <p class="toright">
-    <a data-toggle="modal" href="#flag-material">nahlásit závadný obsah</a> | <a href="#">upravit dokument</a>
+    <a data-toggle="modal" href="#flag-material">nahlásit závadný obsah</a>
+    <% if current_user == @material.user %>
+     | <a href="<%= edit_material_path(@material)%>">upravit dokument</a>
+    <% end %>
 </p>
 <br class="clear" />
 <h1 style="float:left;"><%= [@material.election.title, @material.municipality.full_title, @material.party.to_s].collect(&:capitalize).join(" > ")%></h1>

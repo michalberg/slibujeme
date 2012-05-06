@@ -2,12 +2,13 @@ Slibujeme::Application.routes.draw do
   root :to => 'homepage#index'
   devise_for :users
 
-  resources :materials, :only => [:index, :show, :new, :create] do
+  resources :materials, :except => [:destroy] do
     get :search, :on => :collection
     get :advanced_search, :on => :collection
     get :autocomplete_municipality_title, :on => :collection
     get :autocomplete_polititian_name, :on => :collection
     put :flag, :on => :member
+    get "/my", :as => "users", :on => :collection
   end
   
   namespace :admin do

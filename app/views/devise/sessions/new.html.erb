@@ -1,0 +1,50 @@
+<h2>Přihlášení</h2>
+
+<% if flash[:notice] %>
+<div class="alert alert-success" style="margin-top:16px;width:450px;">
+  <a class="close" data-dismiss="alert">×</a>
+  <%= flash[:notice]%>
+</div>
+<% end %>
+
+<% if flash[:alert] %>
+<div class="alert" style="margin-top:16px;width:450px;">
+  <a class="close" data-dismiss="alert">×</a>
+  <%= flash[:alert]%>
+</div>
+<% end %>
+
+
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <div class="control-group">
+    <%= f.label :email, "E-mail" %>
+    <div class="controls">
+      <%= f.email_field :email %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :password, "Heslo" %>
+    <div class="controls">
+      <%= f.password_field :password %>
+    </div>
+  </div>
+
+  <div>
+  <% if devise_mapping.rememberable? -%>
+    <%= f.label :remember_me, :class => "checkbox" do %>
+      <%= f.check_box :remember_me %> Pamatovat přihlášení
+    <% end %>
+  <% end %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Přihlásit se", :class => "btn btn-primary violet" %>
+    <%= render "links" %>
+  </div>
+<% end %>
+
+
+
+<% @social = false %>
+<% @subpage = true %>

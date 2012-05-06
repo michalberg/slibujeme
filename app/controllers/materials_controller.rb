@@ -4,7 +4,9 @@ class MaterialsController < ApplicationController
 
   before_filter :find_or_instantiate_user, :only => [:create]
   before_filter :process_search_params, :only => [:advanced_search]
-
+  before_filter :authenticate_user!, :only => [:my]
+  before_filter :authorize_user!, :only => [:edit, :update]
+  
   def search
     unless params.has_key?("q")
       redirect_to root_path
@@ -57,8 +59,12 @@ class MaterialsController < ApplicationController
         sign_in(:user, @user)
         @material.user = @user
 
+        # notify user about creating his account
+        MaterialNotifier.materials_user_created(@material, @user).deliver unless @user.password.nil?
+
         # save material
-        @material.save
+        @material.save        
+        
         format.html { redirect_to @material, :notice => t("notice.material.created").html_safe }
       else
         2.times { @material.image_assets.build }
@@ -72,6 +78,38 @@ class MaterialsController < ApplicationController
     end
   end
   
+  def edit
+    2.times { @material.image_assets.build }
+    @material.video_assets.build if @material.video_assets.empty?
+    @material.url_assets.build if @material.url_assets.empty?
+  end
+  
+  def update
+    polititians = params[:material_polititians].split(",").map{|person| person.strip }.uniq unless params[:material_polititians].blank?
+    @material.uploader_ip = request.remote_ip
+    respond_to do |format|
+      if @material.update_attributes(params[:material])
+
+        # save polititians
+        unless params[:material_polititians].blank?
+        @material.polititians = []
+          polititians.each do |name|
+            @material.polititians << Polititian.find_or_create_by_name(name)
+          end
+        end
+
+        format.html { redirect_to edit_material_path(@material), :notice => t("notice.material.updated") }
+        format.json { render :json => @material, :status => :ok }
+      else
+        format.html do
+          flash[:alert] = t("alert.material.not_updated")
+          render action: "edit"
+        end
+      end
+    end
+  end
+  
+  # PUT /materials/:id/flag
   def flag
     @material = Material.find params[:material_id]
     
@@ -85,6 +123,11 @@ class MaterialsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to @material }
     end
+  end
+  
+  # GET /materials/my
+  def my
+    @materials = current_user.materials
   end
 
   private
@@ -121,6 +164,13 @@ class MaterialsController < ApplicationController
 
     unless params[:t].blank?
       @search_params.merge!({:topics_id_in => params[:t].join(",")})
+    end
+  end
+  
+  def authorize_user!
+    @material = Material.find params[:id]
+    unless current_user == @material.user 
+      redirect_to @material, :alert => t('devise.failure.unauthenticated')
     end
   end
 end

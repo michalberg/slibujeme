@@ -1,0 +1,11 @@
+<h2>Moje dokumenty</h2>
+
+<div >
+<% if @materials.any? %>
+    <div id="promise-grid">
+        <ul>
+            <%= render @materials %>
+        </ul>
+    </div>
+<% end %>
+<% @subpage = true %>

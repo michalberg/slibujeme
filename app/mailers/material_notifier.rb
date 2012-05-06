@@ -9,4 +9,13 @@ class MaterialNotifier < ActionMailer::Base
          :subject => I18n.t("mail.flag.subject")
     )
   end
+  
+  def materials_user_created(material, user)
+    @material = material
+    @user     = user
+    mail(
+      :to => @user.email,
+      :subject => I18n.t("mail.account_created.subject")
+    )
+  end
 end

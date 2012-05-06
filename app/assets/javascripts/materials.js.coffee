@@ -13,7 +13,8 @@ $(->
     autocomplete_url: $("#po").attr "data-uri"
     defaultText: 'Vepište jméno politika...'
     width: "390px"
-
+    
+  $( "#tabs" ).tabs()
 
   $("#addStrana").click () ->
     $(@).parent().find("span").show();
@@ -49,4 +50,16 @@ $(->
     $("a#new-party").siblings("span").show()
     $("a#new-party").hide()
     
+  $("a.delete-image-asset").on "click", (evt) ->
+    $.ajax
+      url: $(@).attr("data-uri")
+      type: "PUT"
+      dataType: "json"
+      data:
+        material:
+          image_assets_attributes:
+            [id: $(@).attr("rel"), "_destroy": 1]
+      success: (data, textStatus, jqXHR) =>
+        $(@).parents("div.img").fadeOut().remove()
+    evt.preventDefault()
 )

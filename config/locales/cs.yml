@@ -141,6 +141,8 @@ cs:
   mail:
     flag:
       subject: "[Slibujeme] někdo označil dokument jako závadný"
+    account_created:
+      subject: "[Slibujeme] byl Vám vytvořen účet"
   date:
     abbr_day_names:
     - Ne

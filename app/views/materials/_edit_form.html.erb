@@ -8,7 +8,14 @@
 		
 	</ul>
 	<div id="tabs-1">
-	    <%= f.fields_for :image_assets do |builder| %>	
+	    <% existing_images, new_images = @material.image_assets.partition{|f| !f.new_record?}%>
+	    <% existing_images.each do |file| %>
+	    <div class="img">
+	        <%= image_tag file.image(:thumb) %>
+	        <%= link_to "Smazat", "#", :class => "btn violet btn-danger delete-image-asset", :rel => file.id, :"data-uri" => material_path(@material) %>
+	    </div>
+	    <% end %>
+	    <%= f.fields_for :image_assets, new_images do |builder| %>	
 	        <%= render "image_asset_fields", :f => builder %>
         <% end %>
         <p>
@@ -55,7 +62,8 @@
       <div class="control-group<% if @material.errors.messages[:municipality] %> error<% end %>">
           <%= f.label :municipality_id %>
           <div class="controls">
-              <%= autocomplete_field_tag :municipality_name, params[:municipality_name], autocomplete_municipality_title_materials_path, :id_element => "#material_municipality_id" %>
+              <% municipality_name = !params[:municipality_name].blank? ? params[:municipality_name] : @material.municipality.full_title %>
+              <%= autocomplete_field_tag :municipality_name, municipality_name, autocomplete_municipality_title_materials_path, :id_element => "#material_municipality_id" %>
               <%= f.hidden_field :municipality_id %>
               <% if @material.errors.messages[:municipality] %>
               <% @material.errors.messages[:municipality].each do |msg| %>
@@ -89,7 +97,8 @@
       <div class="control-group">
           <%= f.label :polititians %>
           <div class="controls">
-              <%= text_field_tag :material_polititians, params[:material_polititians], { "data-uri" => autocomplete_polititian_name_materials_path, "rel" => "tooltip", "title" => "Pro přidání další osoby stiskněte po zadání jména enter" } %>
+              <% polititians = (params[:material_polititians]) ? params[:material_polititians] : @material.polititians.collect(&:name).join(",")%>
+              <%= text_field_tag :material_polititians, polititians, { "data-uri" => autocomplete_polititian_name_materials_path, "rel" => "tooltip", "title" => "Pro přidání další osoby stiskněte po zadání jména enter" } %>
           </div>
       </div>
       
@@ -99,25 +108,9 @@
               <%= f.text_area :comment, { "rel" => "tooltip", "title" => "Komentář bude veřejně zobrazen u dokumentu" } %>
           </div>
       </div>
-      
-      <% if !user_signed_in? %>
-          <%= fields_for :user do |user_builder| -%>        
-          <div class="control-group<% if @user.errors.messages[:email] %> error<% end %>">
-              <%= user_builder.label :email, "Kontakt" %>
-              <div class="controls">
-                <%= user_builder.text_field :email, { "rel" => "tooltip", "title" => "Bude vám vytvořeno nový účet svázaný s tímto e-mailem. Nikdy nikde nebude zveřejněna informace o tom, kdo tento dokument přidal." } %>
-                <% @user.errors.messages[:email].each do |msg| %>
-                <span class="help-inline"><%= msg %></span><br>            
-                <% end %>
-              </div>
-          </div>
-          <% end %>
-      <% else %>
-        Jste přihlášen(a) a dokument nahrajete jako <strong><%= current_user.email %></strong>. <%= link_to "Odhlásit", destroy_user_session_path, :method => :delete %>
-      <% end %>
 
       <p id="material-form-controls">
-          <%= f.submit "Vložit", class: "btn success big violet" %>
+          <%= f.submit "Uložit změny", class: "btn success big violet" %>
       </p>
   </div>
 <% end -%>
