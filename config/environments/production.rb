@@ -77,4 +77,14 @@ Slibujeme::Application.configure do
     :url => ':s3_domain_url',
     :path => ':class/:id/:style/:basename.:extension'
   })
+  
+  ActionMailer::Base.smtp_settings = {
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :user_name            => "slibujeme.app@gmail.com",
+    :password             => "pha3chuv",
+    :authentication       => "plain",
+    :enable_starttls_auto => true
+  }
+  config.action_mailer.perform_deliveries = true
 end
