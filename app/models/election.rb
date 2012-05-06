@@ -10,7 +10,7 @@ class Election < ActiveRecord::Base
             }
             
   scope :running, lambda {
-    where("[from] <= ? and [to] >= ?", Date.today, Date.today)
+    where("\"from\" <= ? and \"to\" >= ?", Date.today, Date.today)
   }
 end
 # == Schema Information
