@@ -50,7 +50,31 @@ Feature: Submitting material
     And I should see "Jiří Paroubek"
     And I should see "Josef Dobeš"
     
-  Scenario: Submitting material with video  
+  @javascript
+  Scenario: Submitting material with video
+    When I fill in "Odkaz na video" with "http://www.youtube.com/watch?v=kpD1jzh2Phs"
+    When I select "krajské volby 2012" from "Volby"
+    And I type in "Brn" into autocomplete list "municipality_name" and I choose "Brno (okr. Brno-město)"
+    And I select "ODS" from "Strana"
+    And I type in "Cykl" into javascript select box "Témata" and I choose "Cyklostezky"
+    And I type in "Zam" into javascript select box "Témata" and I choose "Zaměstnanost"
+    And I type "Jiří Paroubek" in "Politici" tag textarea 
+    And I type "Josef Dobeš" in "Politici" tag textarea 
+    And I fill in "Komentář" with
+    """
+    Našel jsem to ve schránce
+    """
+    And I fill in "Kontakt" with "user@email.tld"
+    And I press "Vložit"
+    
+    Then I should see "Děkujeme za nahrání dokumentu."
+    And I should see "krajské volby 2012"
+    And I should see "Brno (okr. Brno-město)"
+    And I should see "ODS"
+    And I should see "Cyklostezky"
+    And I should see "Zaměstnanost"
+    And I should see "Jiří Paroubek"
+    And I should see "Josef Dobeš"
     
   Scenario: Submitting material with multiple images
   

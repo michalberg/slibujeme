@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.2'
-
+gem 'eventmachine', '~> 1.0.0.beta.2'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -24,6 +24,7 @@ group :test do
   gem 'database_cleaner'
   gem 'factory_girl'
   gem 'launchy'
+  gem 'poltergeist'
 end
 
 group :test, :development do
