@@ -62,7 +62,7 @@
       <div class="control-group<% if @material.errors.messages[:municipality] %> error<% end %>">
           <%= f.label :municipality_id %>
           <div class="controls">
-              <% municipality_name = !params[:municipality_name].blank? ? params[:municipality_name] : @material.municipality.full_title %>
+              <% municipality_name = !params[:municipality_name].blank? ? params[:municipality_name] : (!@material.municipality.blank? ? @material.municipality.full_title : nil) %>
               <%= autocomplete_field_tag :municipality_name, municipality_name, autocomplete_municipality_title_materials_path, :id_element => "#material_municipality_id" %>
               <%= f.hidden_field :municipality_id %>
               <% if @material.errors.messages[:municipality] %>
@@ -109,6 +109,7 @@
           </div>
       </div>
 
+      <%= f.hidden_field :not_finished, :value => false %>
       <p id="material-form-controls">
           <%= f.submit "Uložit změny", class: "btn success big violet" %>
       </p>
