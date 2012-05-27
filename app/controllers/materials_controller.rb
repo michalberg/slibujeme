@@ -13,13 +13,13 @@ class MaterialsController < ApplicationController
       return
     end
     title = /(^[^\(]+)/.match(params[:q])[1].strip
-    @q = Material.search(:municipality_title_start => title, :party_title_start => title, :m => 'or')
+    @q = Material.published.search(:municipality_title_start => title, :party_title_start => title, :m => 'or')
     @materials = @q.result
   end
 
   def advanced_search
     unless @search_params.empty?
-      @materials = Material.search(@search_params.merge(:m => 'and')).result(:distinct => true)
+      @materials = Material.published.search(@search_params.merge(:m => 'and')).result(:distinct => true)
     end
   end
   
@@ -28,7 +28,7 @@ class MaterialsController < ApplicationController
 
   # GET /materials/:id
   def show
-    @material = Material.find(params[:id])
+    @material = Material.published.find(params[:id])
   end
 
   # GET /materials/new

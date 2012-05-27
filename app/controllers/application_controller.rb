@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   end
 
   def get_last_added_materials(count = 10)
-    Material.order("created_at DESC").last(10)
+    Material.published.order("created_at DESC").last(10)
   end
   
   def mailer_set_url_options

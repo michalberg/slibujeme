@@ -25,6 +25,8 @@ class Material < ActiveRecord::Base
   
   attr_accessor :party_name
   
+  scope :published, where(:not_finished => false)
+  
   def has_at_least_one_asset_attached
     if 
       self.image_assets.reject(&:marked_for_destruction?).empty? and 
