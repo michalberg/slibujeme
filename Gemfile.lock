@@ -123,7 +123,7 @@ GEM
     nokogiri (1.5.2)
     oauth (0.4.6)
     orm_adapter (0.0.7)
-    paperclip (3.0.2)
+    paperclip (3.0.4)
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -238,7 +238,7 @@ DEPENDENCIES
   gmail
   jquery-rails
   launchy
-  paperclip (~> 3.0)
+  paperclip (~> 3.0.3)
   pg
   poltergeist
   rails (= 3.2.2)

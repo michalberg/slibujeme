@@ -40,7 +40,7 @@ group :production do
 end
 
 gem 'ancestry'
-gem 'paperclip', '~> 3.0'
+gem 'paperclip', '~> 3.0.3'
 gem 'devise'
 gem 'ransack'
 gem 'annotate', '~> 2.4.1.beta'
