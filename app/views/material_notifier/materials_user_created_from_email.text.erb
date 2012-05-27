@@ -1,0 +1,15 @@
+Dobrý den,
+
+děkujeme za nahrání dokumentu.
+
+Tento dokument není hotový a prosíme o doplnění informací k němu, to můžete udělat po přihlášení na adrese:
+
+<%= edit_material_url(@material) %>
+
+<% unless @user.password.nil? %>
+V aplikaci Vám byl k tomuto e-mailu vytvořen účet - příště se tedy již můžete přihlásit a také máte dostupný přehled všech dokumentů, které jste nahráli a možnost tyto dokumenty editovat.
+
+Váš přihlašovací účet je "<%= @user.email %>" a heslo "<%= @user.password %>", obojí se v aplikaci zadává bez uvozovek.
+
+<% end -%>
+Slibujeme.cz Aplikace

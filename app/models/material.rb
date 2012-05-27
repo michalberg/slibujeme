@@ -13,16 +13,19 @@ class Material < ActiveRecord::Base
   accepts_nested_attributes_for :url_assets, :allow_destroy => true, :reject_if => lambda { |video| video[:url].blank? }
   accepts_nested_attributes_for :user, :allow_destroy => false
   
-  validates :municipality, :presence => true
-  validates :election, :presence => true
-  validates :party, :presence => true, :if => "self.party_name.nil?"
-  validates :uploader_ip, :presence => true
-  
-  validate :has_at_least_one_asset_attached, :on => :create
+  with_options :unless => :not_finished do |finished|
+    finished.validates :municipality, :presence => true
+    finished.validates :election, :presence => true
+    finished.validates :party, :presence => true, :if => "self.party_name.nil?"
+    finished.validates :uploader_ip, :presence => true
+    finished.validate :has_at_least_one_asset_attached, :on => :create
+  end
   
   after_save :create_new_party
   
   attr_accessor :party_name
+  
+  scope :published, where(:not_finished => false)
   
   def has_at_least_one_asset_attached
     if 

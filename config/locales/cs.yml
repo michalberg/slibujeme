@@ -143,6 +143,8 @@ cs:
       subject: "[Slibujeme] někdo označil dokument jako závadný"
     account_created:
       subject: "[Slibujeme] byl Vám vytvořen účet"
+    account_created_with_material_from_email:
+      subject: "[Slibujeme] byl Vám vytvořen účet"
   date:
     abbr_day_names:
     - Ne
