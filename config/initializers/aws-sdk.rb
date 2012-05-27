@@ -1,1 +1,0 @@
-AWS.config(:logger => nil)

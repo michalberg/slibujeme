@@ -66,6 +66,9 @@ Slibujeme::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
   
+  # Configure AWS logging
+  AWS.config(:logger => nil)
+  
   # Configure Paperclip to store assets on S3 in production
   Paperclip::Attachment.default_options.merge!({
     :storage => :s3,
