@@ -35,7 +35,7 @@ end
 
 group :production do
   gem 'pg'
-  gem 'aws-sdk'
+  gem 'aws-sdk', '~> 1.5'
   gem 'aws-s3'  
 end
 
