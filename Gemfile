@@ -30,6 +30,7 @@ end
 group :test, :development do
   gem 'rspec-rails', '~> 2.9'
   gem 'sqlite3'
+  gem 'awesome_print'
 end
 
 group :production do
@@ -44,6 +45,7 @@ gem 'devise'
 gem 'ransack'
 gem 'annotate', '~> 2.4.1.beta'
 gem 'date_validator'
+gem 'gmail'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
