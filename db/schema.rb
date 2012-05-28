@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120527062853) do
+ActiveRecord::Schema.define(:version => 20120528073543) do
 
   create_table "elections", :force => true do |t|
     t.string   "title"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20120527062853) do
     t.integer  "user_id"
     t.string   "uploader_ip"
     t.boolean  "not_finished",    :default => false
+    t.boolean  "in_selected_box", :default => false
   end
 
   create_table "materials_polititians", :id => false, :force => true do |t|

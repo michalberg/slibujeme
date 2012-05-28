@@ -1,4 +1,5 @@
 <%= form_for [:admin, @material] do |f| -%>
+ <%= debug @material.errors%>
   <div id="material-form-metadata">
       <div class="control-group<% if @material.errors.messages[:election] %> error<% end %>">
           <%= f.label :election_id %>
@@ -53,6 +54,14 @@
           <%= f.label :comment %>
           <%= f.text_area :comment %>
       </p>
+      
+      <p>
+          <%= f.label :in_selected_box, :class => "checkbox" do %>
+            <%= f.check_box :in_selected_box %> Může být v boxu vybíráme?
+          <% end %>
+      </p>
+      
+      <%= f.hidden_field :uploader_ip %>
 
       <p id="material-form-controls">
           <%= f.submit "Vložit", class: "btn success big violet" %>

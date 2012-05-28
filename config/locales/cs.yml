@@ -56,6 +56,7 @@ cs:
         topic_ids: Témata
         polititians: Politici
         comment: Komentář
+        in_selected_box: Může být v boxu vybíráme?
       image_asset:
         image: Fotka
       video_asset:
