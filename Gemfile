@@ -33,6 +33,10 @@ group :test, :development do
   gem 'awesome_print'
 end
 
+group :development do
+  gem 'railroady'
+end
+
 group :production do
   gem 'pg'
   gem 'aws-sdk', '~> 1.5'
