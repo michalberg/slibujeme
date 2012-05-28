@@ -21,3 +21,10 @@
  *= require homepage
  *= require_self
 */
+.ui-menu .ui-menu-item {
+background-color:white;
+}
+
+.ui-menu .ui-menu-item a:hover {
+color:black;
+}
