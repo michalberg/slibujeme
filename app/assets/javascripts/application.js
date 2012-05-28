@@ -18,3 +18,4 @@
 //= require jquery.tagsinput.min
 //= require bootstrap.min
 //= require materials
+//= require homepage

@@ -13,7 +13,7 @@
 	    <%= text_field_tag :q, nil, {:id => "index-search-text", :placeholder => "obec nebo strana"} %>
 		<%= submit_tag "Hledat", {:class => "btn violet",:id => "index-search-submit"} %>
 	<% end %>
-	<%# TODO <p class="from">Myslíme si, že jsi z obce <a href="#">Brno</a>.</p>#%>
+	<p class="from" id="geo-position">Myslíme si, že jsi z obce <a href="<%= search_materials_path %>?q="></a>.</p>
 	<p class="detailed"><%= link_to "Podrobné hledání", advanced_search_materials_path %></p>
 </div>
 <div id="index-upload">
