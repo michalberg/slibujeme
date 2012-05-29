@@ -4,8 +4,8 @@
 $(->
   $("#material_topic_ids, #t").chosen();
 
-  $("#material_polititians").tagsInput
-    autocomplete_url: $("#material_polititians").attr "data-uri"
+  $("#material_polititian_names").tagsInput
+    autocomplete_url: $("#material_polititian_names").attr "data-uri"
     defaultText: 'Vepište jméno politika...'
     width: "390px"
 
@@ -26,7 +26,7 @@ $(->
     html = $.trim($(@).parent().siblings("p").first().html()).replace(/0/g, $(@).parent().siblings("p").length)
     $(@).parent().before("<p>#{html}</p>")
     
-  $("input#material_polititians_tag")
+  $("input#material_polititian_names_tag")
     .attr("rel", "tooltip")
     .attr("title", "Pro přidání další osoby stiskněte po zadání jména enter")
     .tooltip

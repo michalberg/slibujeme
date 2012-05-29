@@ -21,11 +21,16 @@ class Material < ActiveRecord::Base
     finished.validate :has_at_least_one_asset_attached, :on => :create
   end
   
-  after_save :create_new_party
   
-  attr_accessor :party_name
+  before_save :create_new_party, :assign_polititians
+  
+  attr_accessor :party_name, :polititian_names
   
   scope :published, where(:not_finished => false)
+  
+  def polititian_names
+    @polititian_names || polititians.map(&:name).join(',')
+  end
   
   def has_at_least_one_asset_attached
     if 
@@ -38,8 +43,17 @@ class Material < ActiveRecord::Base
   
   def create_new_party
     unless @party_name.blank?
-      p = Party.find_or_create_by_title(@party_name)
-      self.update_column(:party_id, p.id) 
+      self.party = Party.find_or_create_by_title(@party_name)
+    end
+  end
+  
+  def assign_polititians
+    unless @polititian_names.blank?
+      names = @polititian_names.split(",").map{|person| person.strip }.uniq
+      self.polititians = []
+      names.each do |name|
+        self.polititians << Polititian.find_or_initialize_by_name(name)
+      end
     end
   end
 end

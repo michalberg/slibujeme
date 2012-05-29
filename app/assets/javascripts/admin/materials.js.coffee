@@ -4,8 +4,8 @@
 $(->
   $("#material_topic_ids").chosen();
 
-  $("#material_polititians").tagsInput
-    autocomplete_url: $("#material_polititians").attr "data-uri"
+  $("#material_polititian_names").tagsInput
+    autocomplete_url: $("#polititian_names").attr "data-uri"
     defaultText: 'Vepište jméno politika...'
     width: "390px"
 )
