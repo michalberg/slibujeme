@@ -42,20 +42,12 @@ class MaterialsController < ApplicationController
 
   # POST /materials
   def create
-    polititians = params[:material_polititians].split(",").map{|person| person.strip }.uniq
     @material = Material.new(params[:material])
     @material.uploader_ip = request.remote_ip
     
     respond_to do |format|
       if @material.valid? && @user.valid?
-
-        # save polititians
-        polititians.each do |name|
-          @material.polititians << Polititian.find_or_create_by_name(name)
-        end
-
         # possibly create and save user
-        # sign_user_from_new_material_contact!(@contact)
         sign_in(:user, @user)
         @material.user = @user
 
@@ -85,19 +77,9 @@ class MaterialsController < ApplicationController
   end
   
   def update
-    polititians = params[:material_polititians].split(",").map{|person| person.strip }.uniq unless params[:material_polititians].blank?
     @material.uploader_ip = request.remote_ip
     respond_to do |format|
       if @material.update_attributes(params[:material])
-
-        # save polititians
-        unless params[:material_polititians].blank?
-        @material.polititians = []
-          polititians.each do |name|
-            @material.polititians << Polititian.find_or_create_by_name(name)
-          end
-        end
-
         format.html { redirect_to edit_material_path(@material), :notice => t("notice.material.updated") }
         format.json { render :json => @material, :status => :ok }
       else

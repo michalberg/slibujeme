@@ -45,8 +45,7 @@
       
       <p>
           <%= f.label :polititians %>
-          <% polititians = (params[:material_polititians]) ? params[:material_polititians] : @material.polititians.collect(&:name).join(",")%>
-          <%= text_field_tag :material_polititians, polititians, { "data-uri" => autocomplete_polititian_name_materials_path } %>
+          <%= f.text_field :polititian_names, { "data-uri" => autocomplete_polititian_name_materials_path } %>
       </p>
       
       <p>
