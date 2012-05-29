@@ -4,7 +4,7 @@ class MaterialsController < ApplicationController
 
   before_filter :find_or_instantiate_user, :only => [:create]
   before_filter :process_search_params, :only => [:advanced_search]
-  before_filter :authenticate_user!, :only => [:my]
+  before_filter :authenticate_user!, :only => [:my, :edit, :update]
   before_filter :authorize_user!, :only => [:edit, :update]
   
   def search
