@@ -11,12 +11,12 @@ class UrlAsset < ActiveRecord::Base
   end
 end
 # == Schema Information
-# Schema version: 20120504093311
+# Schema version: 20120529072601
 #
 # Table name: url_assets
 #
 #  id          :integer         not null, primary key
-#  url         :string(255)
+#  url         :text
 #  material_id :integer
 #  created_at  :datetime        not null
 #  updated_at  :datetime        not null

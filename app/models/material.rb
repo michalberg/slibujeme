@@ -44,7 +44,7 @@ class Material < ActiveRecord::Base
   end
 end
 # == Schema Information
-# Schema version: 20120505093603
+# Schema version: 20120529072601
 #
 # Table name: materials
 #
@@ -52,12 +52,12 @@ end
 #  election_id     :integer
 #  municipality_id :integer
 #  party_id        :integer
-#  topics          :text
-#  polititians     :text
 #  comment         :text
 #  created_at      :datetime        not null
 #  updated_at      :datetime        not null
 #  user_id         :integer
 #  uploader_ip     :string(255)
+#  not_finished    :boolean         default(FALSE)
+#  in_selected_box :boolean         default(FALSE)
 #
 
