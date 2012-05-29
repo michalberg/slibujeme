@@ -8,6 +8,7 @@ class MaterialReceiver < ActionMailer::Base
     user = User.find_by_email(email.from[0])
     user = User.new(:email => email.from[0], :password => Devise.friendly_token.first(6)) unless user
     material.user = user
+    material.uploader_ip = "127.0.0.1"
 
     # get image attachments
     email.attachments.each do | attachment |
